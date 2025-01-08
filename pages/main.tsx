@@ -31,7 +31,7 @@ const Home = () => {
               <img
                 src="/images/FMBFI.png"
                 alt="Hero Image"
-                className="w-64 h-auto object-cover rounded-lg mx-auto sm:mx-0"
+                className="w-80 h-auto object-cover rounded-lg mx-auto sm:w-64 sm:mx-0"
               />
             </div>
 
