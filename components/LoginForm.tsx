@@ -1,12 +1,10 @@
 // components/LoginForm.tsx
 import { useState } from "react";
-import { useRouter } from "next/router"; // Import useRouter for routing
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
-  const router = useRouter(); // Initialize useRouter hook
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -18,16 +16,7 @@ const LoginForm = () => {
     });
 
     const data = await response.json();
-
-    if (response.ok) {
-      if (data.role === "Admin") {
-        router.push("/data"); // If the user is an admin, route to data.tsx
-      } else {
-        setMessage("You should be an admin to view the data."); // For non-admin users
-      }
-    } else {
-      setMessage(data.message || "Login failed"); // Show the error message from the server
-    }
+    setMessage(data.message);
   };
 
   return (

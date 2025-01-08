@@ -45,9 +45,7 @@ const SubmitForm = () => {
   return (
     <form className="py-4 space-y-4" onSubmit={handleSubmit}>
       {error && (
-        <div className="bg-red-500 text-white p-4 rounded-md">
-          {error}
-        </div>
+        <div className="bg-red-500 text-white p-4 rounded-md">{error}</div>
       )}
 
       <div className="flex items-center justify-center">
@@ -72,7 +70,7 @@ const SubmitForm = () => {
         <input
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          type="email"
+          type="text"
           name="email"
           id="email"
           className="shadow-md focus:ring-indigo-500 focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md"
