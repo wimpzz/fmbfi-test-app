@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import Navbar from "@/components/NavBar";
 import { useRouter } from "next/router";
 
 const UserPage = () => {
@@ -25,6 +26,7 @@ const UserPage = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <Navbar />
       <main className="flex-grow p-8">
         <h1 className="text-2xl font-bold mb-4">User Details</h1>
         <p>

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import Link from 'next/link';
+import { useState } from "react";
+import Link from "next/link";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -9,20 +9,20 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-gray-800 text-white p-4">
-      <div className="max-w-7xl mx-auto flex justify-between items-center">
-        {/* Logo */}
+    <nav className="bg-gray-800 text-white p-4 sticky top-0 z-10">
+      <div className="max-w-8xl mx-auto flex justify-between items-center">
+        {/* Logo (left-aligned) */}
         <div className="flex items-center">
           <img
-            src="/logo.png" // Replace with your logo image
+            src="/images/logo.png" // Replace with your logo image
             alt="Logo"
             className="h-8 w-auto"
           />
-          <span className="ml-2 text-xl font-bold">Logo Name</span>
+          <span className="ml-2 text-xl font-bold">FRANCISO M BAUTISTA FOUNDATION INC.</span>
         </div>
 
         {/* Navbar Links (Desktop, Tablet, and Mobile) */}
-        <div className="hidden md:flex space-x-4">
+        <div className="hidden md:flex space-x-4 ml-auto">
           <Link href="/about" className="hover:text-gray-400">
             About Us
           </Link>
@@ -35,7 +35,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Search Icon (Tablet and Desktop) */}
-        <div className="hidden md:flex items-center space-x-2">
+        <div className="hidden md:flex items-center space-x-2 ml-auto">
           <input
             type="text"
             placeholder="Search..."
@@ -60,10 +60,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Hamburger Menu for Mobile and Tablet (md and below) */}
-        <button
-          className="md:hidden text-white"
-          onClick={toggleMenu}
-        >
+        <button className="md:hidden text-white" onClick={toggleMenu}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -84,10 +81,16 @@ const Navbar: React.FC = () => {
       {/* Mobile and Tablet Menu */}
       {isMenuOpen && (
         <div className="md:hidden flex flex-col items-center mt-4">
-          <Link href="/about" className="py-2 px-4 text-white hover:bg-gray-700">
+          <Link
+            href="/about"
+            className="py-2 px-4 text-white hover:bg-gray-700"
+          >
             About Us
           </Link>
-          <Link href="/demographics" className="py-2 px-4 text-white hover:bg-gray-700">
+          <Link
+            href="/demographics"
+            className="py-2 px-4 text-white hover:bg-gray-700"
+          >
             Demographics
           </Link>
           <Link href="/news" className="py-2 px-4 text-white hover:bg-gray-700">
