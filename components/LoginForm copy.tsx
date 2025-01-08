@@ -1,3 +1,4 @@
+// components/LoginForm.tsx
 import { useState } from "react";
 import { useRouter } from "next/router"; // Import useRouter for routing
 
@@ -19,10 +20,11 @@ const LoginForm = () => {
     const data = await response.json();
 
     if (response.ok) {
-      router.push({
-        pathname: "/user",
-        query: { ...data.user }, // Pass user details as query parameters
-      });
+      if (data.role === "Admin") {
+        router.push("/data"); // If the user is an admin, route to data.tsx
+      } else {
+        setMessage("You should be an admin to view the data."); // For non-admin users
+      }
     } else {
       setMessage(data.message || "Login failed"); // Show the error message from the server
     }
@@ -60,7 +62,7 @@ const LoginForm = () => {
           name="password"
           id="password"
           className="shadow-md focus:ring-indigo-500 focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md"
-          placeholder="Your StudentId"
+          placeholder="Your Password"
         />
       </div>
 

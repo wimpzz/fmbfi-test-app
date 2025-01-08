@@ -1,3 +1,4 @@
+// /pages/api/login.ts
 import { NextApiRequest, NextApiResponse } from "next";
 import { google } from "googleapis";
 
@@ -28,25 +29,26 @@ export default async function handler(
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: "Sheet4!A2:P1000", // Adjusted range for StudentId, Email, and others
+      range: "A2:D1000", // Include the password column
     });
 
     const rows = response.data.values || [];
     const user = rows.find(
-      ([studentId, , , , , emailField]) => studentId === password && emailField === email
+      ([name, emailField, role, passwordField]) =>
+        emailField === email && passwordField === password
     );
 
     if (!user) {
-      return res.status(401).json({ message: "User not existed in database" });
+      return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    // Destructure to get user details
-    const [studentId, no, lastName, firstName, middleName, emailField] = user;
+    const [name, , role] = user;
 
-    return res.status(200).json({
-      message: "Login successful",
-      user: { studentId, no, lastName, firstName, middleName, emailField },
-    });
+    if (role === "Admin") {
+      return res.status(200).json({ message: "Welcome Admin", role });
+    } else {
+      return res.status(403).json({ message: "You should be an admin", role });
+    }
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "Something went wrong" });

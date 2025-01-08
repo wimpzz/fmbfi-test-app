@@ -6,7 +6,7 @@ const Index = () => {
   const router = useRouter();
 
   useEffect(() => {
-    router.push("/index2"); // Redirects to /home
+    router.push("/main"); // Redirects to /home
   }, [router]);
 
   return null; // You can return a loading spinner or null while the redirect happens
