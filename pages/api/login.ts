@@ -28,12 +28,12 @@ export default async function handler(
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: "Sheet4!A2:P1000", // Adjusted range for StudentId, Email, and others
+      range: "Sheet2!A2:Z1000", // Adjusted range for all columns
     });
 
     const rows = response.data.values || [];
     const user = rows.find(
-      ([studentId, , , , , emailField]) => studentId === password && emailField === email
+      ([studentId, , , , , , , , , , , , , emailField]) => studentId === password && emailField === email
     );
 
     if (!user) {
@@ -41,11 +41,17 @@ export default async function handler(
     }
 
     // Destructure to get user details
-    const [studentId, no, lastName, firstName, middleName, emailField] = user;
+    const [
+      studentId, no, batch, sy, year, category, status, lastName, firstName,
+      middleName, school, course, duration, emailField, mobileNumber, facebook, address
+    ] = user;
 
     return res.status(200).json({
       message: "Login successful",
-      user: { studentId, no, lastName, firstName, middleName, emailField },
+      user: {
+        studentId, no, batch, sy, year, category, status, lastName, firstName,
+        middleName, school, course, duration, emailField, mobileNumber, facebook, address
+      },
     });
   } catch (error) {
     console.error(error);

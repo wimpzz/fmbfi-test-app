@@ -72,7 +72,7 @@ const SubmitForm = () => {
           onChange={(e) => setEmail(e.target.value)}
           type="text"
           name="email"
-          id="email"
+          id="email1"
           className="shadow-md focus:ring-indigo-500 focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md"
           placeholder="Your Email"
         />
