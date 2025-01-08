@@ -1,69 +1,125 @@
-// components/Navbar.tsx
-import React from "react";
+import { useState } from 'react';
+import Link from 'next/link';
 
-const Navbar = () => {
+const Navbar: React.FC = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
-    <nav className="bg-white shadow sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo Section */}
-          <div className="flex items-center space-x-4">
-            <img src="/logo.png" alt="Logo" className="h-10 w-10" />
-            <div>
-              <h1 className="text-xl font-bold text-gray-900">Logo Name</h1>
-              <div className="flex space-x-4 mt-2">
-                <a href="#about" className="text-gray-900 hover:text-blue-600">
-                  About Us
-                </a>
-                <a
-                  href="#demographics"
-                  className="text-gray-900 hover:text-blue-600"
-                >
-                  Demographics
-                </a>
-                <a href="#news" className="text-gray-900 hover:text-blue-600">
-                  News and Updates
-                </a>
-              </div>
-            </div>
-          </div>
+    <nav className="bg-gray-800 text-white p-4">
+      <div className="max-w-7xl mx-auto flex justify-between items-center">
+        {/* Logo */}
+        <div className="flex items-center">
+          <img
+            src="/logo.png" // Replace with your logo image
+            alt="Logo"
+            className="h-8 w-auto"
+          />
+          <span className="ml-2 text-xl font-bold">Logo Name</span>
+        </div>
 
-          {/* Search Bar */}
-          <div className="flex-1 flex justify-end">
-            <div className="max-w-lg w-full lg:max-w-xs">
-              <label htmlFor="search" className="sr-only">
-                Search
-              </label>
-              <div className="relative">
-                <input
-                  id="search"
-                  name="search"
-                  className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                  placeholder="Search"
-                  type="search"
+        {/* Navbar Links (Desktop, Tablet, and Mobile) */}
+        <div className="hidden md:flex space-x-4">
+          <Link href="/about" className="hover:text-gray-400">
+            About Us
+          </Link>
+          <Link href="/demographics" className="hover:text-gray-400">
+            Demographics
+          </Link>
+          <Link href="/news" className="hover:text-gray-400">
+            News and Updates
+          </Link>
+        </div>
+
+        {/* Search Icon (Tablet and Desktop) */}
+        <div className="hidden md:flex items-center space-x-2">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="p-2 rounded-md text-gray-800"
+          />
+          <button className="text-white p-2 rounded-md">
+            <svg
+              className="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M11 4a7 7 0 100 14 7 7 0 000-14zm0 0l7 7"
+              />
+            </svg>
+          </button>
+        </div>
+
+        {/* Hamburger Menu for Mobile and Tablet (md and below) */}
+        <button
+          className="md:hidden text-white"
+          onClick={toggleMenu}
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            className="w-6 h-6"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+
+      {/* Mobile and Tablet Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden flex flex-col items-center mt-4">
+          <Link href="/about" className="py-2 px-4 text-white hover:bg-gray-700">
+            About Us
+          </Link>
+          <Link href="/demographics" className="py-2 px-4 text-white hover:bg-gray-700">
+            Demographics
+          </Link>
+          <Link href="/news" className="py-2 px-4 text-white hover:bg-gray-700">
+            News and Updates
+          </Link>
+
+          {/* Search Input for Mobile and Tablet */}
+          <div className="mt-4 flex items-center space-x-2">
+            <input
+              type="text"
+              placeholder="Search..."
+              className="p-2 rounded-md text-gray-800"
+            />
+            <button className="text-white p-2 rounded-md">
+              <svg
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M11 4a7 7 0 100 14 7 7 0 000-14zm0 0l7 7"
                 />
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <svg
-                    className="h-5 w-5 text-gray-400"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    aria-hidden="true"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M8 16l-4-4m0 0l4-4m-4 4h16"
-                    />
-                  </svg>
-                </div>
-              </div>
-            </div>
+              </svg>
+            </button>
           </div>
         </div>
-      </div>
+      )}
     </nav>
   );
 };

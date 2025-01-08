@@ -1,6 +1,6 @@
 import Head from "next/head";
-import { useRouter } from "next/router"; // Import useRouter hook
-import SubmitForm from "../components/SubmitForm"; // Import the SubmitForm component
+import { useRouter } from "next/router";
+import SubmitForm from "../components/SubmitForm";
 import Footer from "@/components/Footer";
 import LoginForm from "@/components/LoginForm";
 import Navbar from "@/components/NavBar";
@@ -9,7 +9,7 @@ const Home = () => {
   const router = useRouter();
 
   const handleViewData = () => {
-    router.push("/data"); // Navigate to data.tsx page
+    router.push("/data");
   };
 
   return (
@@ -25,20 +25,71 @@ const Home = () => {
 
         {/* Hero Section */}
         <section className="bg-gray-100 min-h-screen flex items-center justify-center text-center">
-          <div>
-            <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
-              Welcome to Our Landing Page
-            </h1>
-            <p className="text-lg sm:text-xl text-gray-600 mb-6">
-              Start your journey with us and explore the amazing features we
-              offer.
-            </p>
-            <a
-              href="#features"
-              className="bg-blue-600 text-white py-2 px-4 sm:py-2 sm:px-6 rounded-full text-base sm:text-lg hover:bg-blue-500"
-            >
-              Explore Features
-            </a>
+          <div className="flex flex-col-reverse sm:flex-row w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Left Column: Image */}
+            <div className="flex-1 mb-8 sm:mb-0 sm:mr-8">
+              <img
+                src="/hero-image.png"
+                alt="Hero Image"
+                className="w-full h-auto object-cover rounded-lg"
+              />
+            </div>
+
+            {/* Right Column: Text and Buttons */}
+            <div className="flex-1 text-center sm:text-left">
+              <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+                Welcome to Our Landing Page
+              </h1>
+              <p className="text-lg sm:text-xl text-gray-600 mb-6">
+                Start your journey with us and explore the amazing features we offer.
+              </p>
+              <div className="flex justify-center sm:justify-start space-x-4">
+                <a
+                  href="#features"
+                  className="bg-blue-600 text-white py-2 px-4 sm:py-2 sm:px-6 rounded-full text-base sm:text-lg hover:bg-blue-500"
+                >
+                  Explore Features
+                </a>
+                <a
+                  href="#login"
+                  className="bg-green-600 text-white py-2 px-4 sm:py-2 sm:px-6 rounded-full text-base sm:text-lg hover:bg-green-500"
+                >
+                  Login
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* News and Updates Section */}
+        <section
+          id="news"
+          className="min-h-screen flex items-center justify-center bg-white text-center"
+        >
+          <div className="flex flex-col sm:flex-row w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Left Column: Header and Subheading */}
+            <div className="flex-1 sm:mr-8 mb-8 sm:mb-0">
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
+                Latest News and Updates
+              </h2>
+              <p className="text-lg sm:text-xl text-gray-600">
+                Stay updated with the latest news and announcements. Here you’ll find all the recent developments and important information about our services.
+              </p>
+            </div>
+
+            {/* Right Column: YouTube Embed */}
+            <div className="flex-1">
+              <div className="aspect-w-16 aspect-h-9 sm:aspect-h-20">
+                <iframe
+                  className="w-full h-full rounded-lg"
+                  src="https://www.youtube.com/embed/98uCSivvYk8"
+                  title="YouTube video player"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -47,7 +98,7 @@ const Home = () => {
           id="features"
           className="min-h-screen flex items-center justify-center bg-white text-center"
         >
-          <div>
+          <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-12">
               Our Features
             </h2>
@@ -74,8 +125,8 @@ const Home = () => {
           </div>
         </section>
 
-        {/* Submit Form Section */}
-        <section
+        {/* Submit Form Section (Commented out for now) */}
+        {/* <section
           id="submit-form"
           className="min-h-screen flex items-center justify-center bg-gray-50"
         >
@@ -85,7 +136,7 @@ const Home = () => {
             </h2>
             <SubmitForm />
           </div>
-        </section>
+        </section> */}
 
         {/* Login Section */}
         <section
@@ -100,6 +151,7 @@ const Home = () => {
           </div>
         </section>
 
+        {/* Footer */}
         <Footer />
       </div>
     </main>
