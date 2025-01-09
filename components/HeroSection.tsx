@@ -42,7 +42,7 @@ const HeroSection = () => {
               {/* Buttons */}
               <div className="flex flex-col sm:flex-row justify-center sm:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
                 <a
-                  href="#features"
+                  href="#"
                   className="bg-gray-100 text-red-900 py-2 px-6 sm:py-2 sm:px-8 lg:py-3 lg:px-10 rounded-full text-base sm:text-lg lg:text-xl w-full sm:w-[200px] lg:w-[250px] flex justify-center items-center border-4 border-red-900 hover:bg-red-900 hover:text-white transition-colors duration-300"
                 >
                   APPLY NOW

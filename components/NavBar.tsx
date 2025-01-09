@@ -35,16 +35,16 @@ const Navbar: React.FC = () => {
 
         {/* Navbar Links (Hidden on Small and Tablet, Visible on Large Screens) */}
         <div className="hidden xl:flex space-x-6 ml-auto text-2xl items-center">
-          <Link href="/about" className="hover:text-red-400 hover:underline">
+          <Link href="#about" className="hover:text-red-400 hover:underline">
             About Us
           </Link>
           <Link
-            href="/demographics"
+            href="#demographics"
             className="hover:text-red-400 hover:underline"
           >
             Demographics
           </Link>
-          <Link href="/news" className="hover:text-red-400 hover:underline">
+          <Link href="#news" className="hover:text-red-400 hover:underline">
             News and Updates
           </Link>
         </div>
@@ -104,19 +104,19 @@ const Navbar: React.FC = () => {
       {isMenuOpen && (
         <div className="xl:hidden flex flex-col items-center mt-6">
           <Link
-            href="/about"
+            href="#about"
             className="py-3 px-6 text-white hover:bg-gray-700 text-lg"
           >
             About Us
           </Link>
           <Link
-            href="/demographics"
+            href="#demographics"
             className="py-3 px-6 text-white hover:bg-gray-700 text-lg"
           >
             Demographics
           </Link>
           <Link
-            href="/news"
+            href="#news"
             className="py-3 px-6 text-white hover:bg-gray-700 text-lg"
           >
             News and Updates

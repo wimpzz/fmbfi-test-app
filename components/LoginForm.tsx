@@ -21,7 +21,7 @@ const LoginForm = () => {
     if (response.ok) {
       router.push({
         pathname: "/user",
-        query: { ...data.user }, // Pass user details as query parameters
+        query: { ...data.user },
       });
     } else {
       setMessage(data.message || "Login failed"); // Show the error message from the server
@@ -29,7 +29,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form className="py-4 space-y-4" onSubmit={handleSubmit}>
+    <form className="py-8 space-y-6" onSubmit={handleSubmit}>
       {message && (
         <div className="bg-red-500 text-white p-4 rounded-md">{message}</div>
       )}
@@ -44,7 +44,7 @@ const LoginForm = () => {
           type="email"
           name="email"
           id="email"
-          className="shadow-md focus:ring-indigo-500 focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md"
+          className="shadow-md focus:ring-red-900 focus:border-red-900 block w-full max-w-lg sm:text-lg lg:text-xl border-gray-300 rounded-md p-4"
           placeholder="Your Email"
         />
       </div>
@@ -59,7 +59,7 @@ const LoginForm = () => {
           type="password"
           name="password"
           id="password"
-          className="shadow-md focus:ring-indigo-500 focus:border-indigo-500 block w-64 sm:text-md border-gray-300 rounded-md"
+          className="shadow-md focus:ring-red-900 focus:border-red-900 block w-full max-w-lg sm:text-lg lg:text-xl border-gray-300 rounded-md p-4"
           placeholder="Your StudentId"
         />
       </div>
@@ -67,7 +67,7 @@ const LoginForm = () => {
       <div className="flex items-center justify-center">
         <button
           type="submit"
-          className="flex items-center justify-center text-sm w-64 rounded-md shadow py-3 px-2 text-white bg-indigo-500"
+          className="flex items-center justify-center w-full max-w-lg rounded-md shadow py-4 px-6 text-lg sm:text-xl lg:text-2xl text-white bg-red-900 hover:bg-white hover:text-red-900 border-4 border-transparent hover:border-red-900 transition-colors duration-300"
         >
           Login
         </button>
