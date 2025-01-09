@@ -16,15 +16,15 @@ const Navbar: React.FC = () => {
           <img
             src="/images/logo.png" // Replace with your logo image
             alt="Logo"
-            className="h-12 w-auto sm:h-8"
+            className="h-12 w-auto sm:h-8 lg:h-12"
           />
-          <span className="ml-2 text-lg sm:text-xl font-bold">
+          <span className="ml-2 sm:text-xl md:text-lg lg:text-2xl font-bold">
             FRANCISCO M BAUTISTA FOUNDATION INC.
           </span>
         </div>
 
         {/* Navbar Links (Desktop, Tablet, and Mobile) */}
-        <div className="hidden md:flex space-x-4 ml-auto">
+        <div className="hidden md:flex space-x-4 ml-auto text-lg items-center">
           <Link href="/about" className="hover:text-gray-400">
             About Us
           </Link>
