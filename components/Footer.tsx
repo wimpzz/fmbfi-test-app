@@ -3,12 +3,12 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900 text-white py-6">
+    <footer className="bg-gray-900 text-white py-4">
       <div className="max-w-5xl mx-auto text-center">
-        <p className="text-lg sm:text-xl md:text-2xl">
+        <p className="text-base sm:text-lg md:text-xl">
           © {new Date().getFullYear()} FMBFI. All rights reserved.
         </p>
-        <p className="text-sm sm:text-base md:text-lg">
+        <p className="text-xs sm:text-sm md:text-base">
           <a
             href="/privacy-policy"
             className="text-white hover:text-red-400 hover:underline px-2 py-1"

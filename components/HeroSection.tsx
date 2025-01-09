@@ -1,42 +1,79 @@
-import React from "react";
+import React, { useState } from "react";
 
 const HeroSection = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleDescription = () => {
+    setIsExpanded((prev) => !prev);
+  };
+
   return (
     <div>
       {/* Hero Section */}
       <section className="bg-gray-100 min-h-screen flex items-center justify-center text-center py-8 sm:py-16">
-        <div className="flex flex-col lg:flex-row w-full max-w-screen-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col lg:flex-row w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Left Column: Image */}
           <div className="flex-1 mb-6 lg:mb-0 flex items-center justify-center">
-            <div className="inline-block w-full">
+            <div className="inline-block w-full h-full">
               <img
                 src="/images/FMBFI.JPG"
                 alt="Hero Image"
-                className="w-full h-full object-cover rounded-lg"
+                className="object-cover rounded-lg w-full h-full"
               />
             </div>
           </div>
 
           {/* Right Column: Text and Buttons */}
-          <div className="flex-1 flex flex-col justify-center lg:text-left px-4 lg:px-8">
+          <div className="flex-1 flex flex-col justify-between lg:text-left px-4 lg:px-8">
             <div className="flex-1">
-              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-6 sm:mb-10">
+              {/* Header */}
+              <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-6 px-4 sm:px-8">
                 FRANCISCO M BAUTISTA FOUNDATION INC&nbsp;
                 <span className="block sm:inline">(FMBFI)</span>
-              </h1>
+              </h2>
 
-              <p className="text-base sm:text-lg md:text-xl lg:text-3xl text-gray-700 mb-6 text-justify max-w-[80ch]">
+              {/* Subheading */}
+              <p
+                className={`text-lg text-justify sm:text-xl text-gray-600 mb-8 px-4 sm:px-8 ${
+                  isExpanded ? "" : "line-clamp-3"
+                }`}
+                style={{
+                  display: "-webkit-box",
+                  WebkitBoxOrient: "vertical",
+                  overflow: "hidden",
+                  WebkitLineClamp: isExpanded ? "none" : 5, // limit to 3 lines when collapsed
+                }}
+              >
                 The Francisco M Bautista Foundation Incorporated was conceived
                 to serve as the legacy of Francisco Manuel Bautista, who,
                 despite only completing fourth grade, achieved great success in
                 life and became the founder of the St Peter Group of Companies.
-                Upon his death, his daughter, Sis Del Bautista-Vitangcol,
-                endeavored to immortalize his name. This endeavor came to
-                fruition through her consultation with Bro Ernie M Burdeos, the
-                Presiding Elder of the St Peter Community, whose subsequent
-                inspiration prompted the inception of a Scholarship Foundation
-                in her father's name.
+                {/* Conditionally render expanded text only for small screens */}
+                {isExpanded && (
+                  <>
+                    Upon his death, his daughter, Sis Del Bautista-Vitangcol,
+                    endeavored to immortalize his name. This endeavor came to
+                    fruition through her consultation with Bro Ernie M Burdeos,
+                    the Presiding Elder of the St Peter Community, whose
+                    subsequent inspiration prompted the inception of a
+                    Scholarship Foundation in her father's name. This initiative
+                    has since provided scholarships to numerous students,
+                    empowering them to pursue higher education and succeed in
+                    their careers. The Foundation continues to honor the legacy
+                    of Francisco M. Bautista by supporting the education of
+                    deserving students and making a positive impact on the
+                    community.
+                  </>
+                )}
               </p>
+
+              {/* Toggle Button: Only on small screens */}
+              <button
+                onClick={toggleDescription}
+                className="text-red-900 font-semibold text-lg px-4 py-2 hover:text-red-600 sm:hidden inline-block mt-2"
+              >
+                {isExpanded ? "See less" : "See more"}
+              </button>
             </div>
             <div className="mt-auto flex justify-center">
               {/* Buttons */}

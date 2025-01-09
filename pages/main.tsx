@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import LoginForm from "@/components/LoginForm";
 import Navbar from "@/components/NavBar";
 import HeroSection from "@/components/HeroSection";
+import CountUp from 'react-countup';  // Import the countup library
 
 const Home = () => {
   const router = useRouter();
@@ -32,6 +33,16 @@ const Home = () => {
     };
   }, []);
 
+  // Reusable CountUp Component
+  const CountUpCard = ({ start, end, label }: { start: number; end: number; label: string }) => (
+    <div className="flex flex-col items-center text-gray-800">
+      <h3 className="text-3xl sm:text-5xl font-bold mb-2">
+        <CountUp start={start} end={end} duration={3} />
+      </h3>
+      <p className="text-lg">{label}</p>
+    </div>
+  );
+
   return (
     <main className="bg-gray-100 min-h-screen font-title">
       <div className="w-full">
@@ -49,18 +60,16 @@ const Home = () => {
         {/* Features Section Above News Updates */}
         <section
           id="features"
-          className="min-h-screen flex items-center justify-center bg-gray-200 text-center py-16 px-4 sm:px-8 lg:px-16"
+          className="min-h-screen flex items-center justify-center bg-gray-200 text-center py-12 px-4 sm:px-6 lg:px-12"
         >
-          <div className="flex flex-col lg:flex-row w-full max-w-screen-4xl mx-auto">
+          <div className="flex flex-col lg:flex-row w-full max-w-screen-xl mx-auto">
             {/* Left Side Text */}
             <div className="flex-1 flex flex-col justify-center text-center lg:text-left px-6 sm:px-8">
-              <h2 className="text-4xl sm:text-6xl font-bold text-gray-900 mb-6">
+              <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">
                 FMBFI THROUGH THE YEARS
               </h2>
-              <p className="text-lg sm:text-xl text-gray-600 mb-8">
-                Add a brief description about this section. This can be any
-                content that introduces the video or other content in this new
-                section.
+              <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8">
+                Add a brief description about this section. This can be any content that introduces the video or other content in this new section.
               </p>
             </div>
 
@@ -73,9 +82,27 @@ const Home = () => {
                   title="FMBFI Featured Graduates"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  style={{ height: "500px" }}
+                  style={{ height: "450px" }}
                 ></iframe>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* New Demographic Section */}
+        <section
+          id="demographics"
+          className="min-h-screen flex items-center justify-center bg-gray-100 text-center py-12 px-4 sm:px-6 lg:px-12"
+        >
+          <div className="flex flex-col items-center">
+            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-6">
+              OUR IMPACT
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-12">
+              <CountUpCard start={0} end={57} label="CITIES" />
+              <CountUpCard start={0} end={616} label="GRADUATES" />
+              <CountUpCard start={0} end={20} label="BATCHES" />
+              <CountUpCard start={0} end={198} label="CURRENT SCHOLARS" />
             </div>
           </div>
         </section>
@@ -83,18 +110,16 @@ const Home = () => {
         {/* News and Updates Section */}
         <section
           id="news"
-          className="min-h-screen flex flex-col items-center justify-center bg-gray-50 text-center py-16 px-4 sm:px-8 lg:px-16"
+          className="min-h-screen flex flex-col items-center justify-center bg-gray-50 text-center py-12 px-4 sm:px-6 lg:px-12"
         >
           {/* Header */}
-          <h2 className="text-4xl sm:text-6xl font-bold text-gray-900 mb-6 px-4 sm:px-8">
+          <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-6 px-4 sm:px-8">
             LATEST NEWS & UPDATES
           </h2>
 
           {/* Subheading */}
-          <p className="text-lg sm:text-xl text-gray-600 mb-8 px-4 sm:px-8">
-            Stay updated with the latest news and announcements. Here you’ll
-            find all the recent developments and important information about our
-            services.
+          <p className="text-lg sm:text-xl text-gray-600 mb-6 px-4 sm:px-8">
+            Stay updated with the latest news and announcements. Here you’ll find all the recent developments and important information about our services.
           </p>
 
           {/* Video */}
@@ -105,67 +130,18 @@ const Home = () => {
               title="FMBFI Featured Graduates"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              style={{ height: "500px" }}
+              style={{ height: "450px" }}
             ></iframe>
-          </div>
-        </section>
-
-        {/* Mission Section */}
-        <section
-          id="mission"
-          className="min-h-screen flex items-center justify-center bg-gray-50 text-center py-16"
-        >
-          <div className="w-full max-w-screen-xl mx-auto px-2 sm:px-4 lg:px-6">
-            <h2 className="text-4xl sm:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 sm:mb-10">
-              MISSION & VISION
-            </h2>
-
-            <div className="grid grid-cols-1 sm:grid-cols-20 lg:grid-cols-3 gap-8">
-              {/* Core Values */}
-              <div className="bg-white p-4 sm:p-6 lg:p-8 px-6 sm:px-8 lg:px-10 rounded-lg shadow-lg mb-6 sm:mb-8 lg:mb-10 hover:shadow-xl hover:scale-105 transform transition duration-300">
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800 mb-4">
-                  Core Values
-                </h3>
-                <ul className="list-disc list-inside text-gray-600 space-y-2 lg:text-lg">
-                  <li>To provide financial assistance to the grantees.</li>
-                  <li>To assist the grantees to finish their studies.</li>
-                  <li>To assist the FMBFI graduates find jobs.</li>
-                </ul>
-              </div>
-
-              {/* Mission */}
-              <div className="bg-white p-4 sm:p-6 lg:p-8 px-6 sm:px-8 lg:px-10 rounded-lg shadow-lg mb-6 sm:mb-8 lg:mb-10 hover:shadow-xl hover:scale-105 transform transition duration-300">
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800 mb-4">
-                  Mission
-                </h3>
-                <p className="text-gray-600 lg:text-lg">
-                  To become a partner of the government in educating the
-                  Filipino people.
-                </p>
-              </div>
-
-              {/* Vision */}
-              <div className="bg-white p-4 sm:p-6 lg:p-8 px-6 sm:px-8 lg:px-10 rounded-lg shadow-lg mb-6 sm:mb-8 lg:mb-10 hover:shadow-xl hover:scale-105 transform transition duration-300">
-                <h3 className="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800 mb-4">
-                  Vision
-                </h3>
-                <p className="text-gray-600 lg:text-lg">
-                  Conceived to develop a highly literate generation that can
-                  contribute to the growth of the Filipino people and that will
-                  promote Love of God and country.
-                </p>
-              </div>
-            </div>
           </div>
         </section>
 
         {/* Login Section */}
         <section
           id="login"
-          className="min-h-screen flex items-center justify-center bg-white py-16"
+          className="min-h-screen flex items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-12"
         >
           <div className="max-w-md mx-auto text-center px-4 sm:px-0">
-            <h2 className="text-4xl sm:text-6xl font-bold text-gray-900 mb-6">
+            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-6">
               Login Section
             </h2>
             <LoginForm />
@@ -181,6 +157,7 @@ const Home = () => {
         <button
           onClick={scrollToTop}
           className="fixed bottom-8 right-8 flex items-center bg-red-900 text-white p-4 rounded-full shadow-lg hover:bg-red-500 transition duration-300"
+          aria-label="Scroll to top"
         >
           <span className="mr-2">Back to Top</span>
           <span>↑</span>

@@ -18,23 +18,22 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-gray-900 text-white p-4 sticky top-0 z-10">
+    <nav className="bg-gray-900 text-white p-3 sticky top-0 z-10">
       <div className="max-w-8xl mx-auto flex justify-between items-center">
         {/* Logo (left-aligned) */}
         <div className="flex items-center">
           <img
             src="/images/logo.png"
             alt="Logo"
-            className="h-12 w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 rounded-full"
-            // style={{ boxShadow: "0 4px 6px rgba(255, 255, 255, 0.5)" }}
+            className="h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full"
           />
-          <span className="ml-4 text-lg sm:text-2xl lg:text-4xl font-bold">
+          <span className="ml-3 text-sm sm:text-xl lg:text-2xl font-bold">
             FRANCISCO M BAUTISTA FOUNDATION INC.
           </span>
         </div>
 
         {/* Navbar Links (Hidden on Small and Tablet, Visible on Large Screens) */}
-        <div className="hidden xl:flex space-x-6 ml-auto text-2xl items-center">
+        <div className="hidden xl:flex space-x-10 ml-auto text-lg items-center">
           <Link href="#about" className="hover:text-red-400 hover:underline">
             About Us
           </Link>
@@ -50,13 +49,13 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Search Icon for Mobile, Tablet, and Laptop */}
-        <div className="flex xl:hidden items-center space-x-4 ml-auto">
+        <div className="flex xl:hidden items-center space-x-3 ml-auto">
           <button
             onClick={openSearchModal}
-            className="text-white p-3 rounded-md"
+            className="text-white p-2 rounded-md"
           >
             <svg
-              className="w-8 h-8"
+              className="w-6 h-6"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -73,11 +72,11 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Search Bar always visible on Extra Large Screens */}
-        <div className="hidden xl:flex items-center space-x-4 ml-auto">
+        <div className="hidden xl:flex items-center space-x-3 ml-auto">
           <input
             type="text"
             placeholder="Search..."
-            className="p-43 rounded-md text-gray-800 text-xl"
+            className="p-2 rounded-md text-gray-800 text-lg"
           />
         </div>
 
@@ -88,7 +87,7 @@ const Navbar: React.FC = () => {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
-            className="w-8 h-8"
+            className="w-6 h-6"
           >
             <path
               strokeLinecap="round"
@@ -102,22 +101,22 @@ const Navbar: React.FC = () => {
 
       {/* Mobile and Tablet Menu */}
       {isMenuOpen && (
-        <div className="xl:hidden flex flex-col items-center mt-6">
+        <div className="xl:hidden flex flex-col items-center mt-4">
           <Link
             href="#about"
-            className="py-3 px-6 text-white hover:bg-gray-700 text-lg"
+            className="py-2 px-5 text-white hover:bg-gray-700 text-lg"
           >
             About Us
           </Link>
           <Link
             href="#demographics"
-            className="py-3 px-6 text-white hover:bg-gray-700 text-lg"
+            className="py-2 px-5 text-white hover:bg-gray-700 text-lg"
           >
             Demographics
           </Link>
           <Link
             href="#news"
-            className="py-3 px-6 text-white hover:bg-gray-700 text-lg"
+            className="py-2 px-5 text-white hover:bg-gray-700 text-lg"
           >
             News and Updates
           </Link>
@@ -127,7 +126,7 @@ const Navbar: React.FC = () => {
       {/* Search Modal for Small, Tablet, and Laptop Screens */}
       {isSearchModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
-          <div className="bg-white p-6 rounded-md shadow-lg w-3/4 max-w-md">
+          <div className="bg-white p-4 rounded-md shadow-lg w-3/4 max-w-md">
             <div className="flex justify-between items-center">
               <input
                 type="text"
@@ -136,10 +135,10 @@ const Navbar: React.FC = () => {
               />
               <button
                 onClick={closeSearchModal}
-                className="text-gray-600 p-3 ml-3"
+                className="text-gray-600 p-3 ml-2"
               >
                 <svg
-                  className="w-8 h-8"
+                  className="w-6 h-6"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
