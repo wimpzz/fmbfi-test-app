@@ -25,25 +25,24 @@ const Home = () => {
 
         {/* Hero Section */}
         <section className="bg-gray-100 min-h-screen flex items-center justify-center text-center py-8 sm:py-16">
-          <div className="flex flex-col sm:flex-row w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row w-full max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
             {/* Left Column: Image */}
-            <div className="flex-1 mb-6 sm:mb-0 sm:mr-8">
-              <div className="inline-block">
+            <div className="flex-1 mb-6 md:mb-0 md:mr-8 flex items-stretch">
+              <div className="inline-block w-full">
                 <img
                   src="/images/FMBFI.JPG"
                   alt="Hero Image"
-                  className="w-full sm:w-96 object-cover rounded-lg mx-auto sm:mx-0"
-                  style={{ height: "auto", width: "800px" }}
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
             </div>
 
             {/* Right Column: Text and Buttons */}
-            <div className="flex-1 text-center sm:text-left px-4 sm:px-0">
-              <h1 className="text-3xl sm:text-4xl lg:text-7xl font-bold text-gray-900 mb-4">
+            <div className="flex-1 flex flex-col text-center md:text-left px-4 md:px-6 lg:px-8 justify-center">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
                 FRANCISCO M BAUTISTA FOUNDATION INC.
               </h1>
-              <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 mb-6 text-justify">
+              <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-6 text-justify">
                 The Francisco M Bautista Foundation Incorporated was conceived
                 to serve as the legacy of Francisco Manuel Bautista, who,
                 despite only completing fourth grade, achieved great success in
@@ -55,7 +54,7 @@ const Home = () => {
                 inspiration prompted the inception of a Scholarship Foundation
                 in her father's name.
               </p>
-              <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+              <div className="flex flex-col sm:flex-row justify-center md:justify-start items-center space-y-4 sm:space-y-0 sm:space-x-4">
                 <a
                   href="#features"
                   className="bg-blue-600 text-white py-2 px-6 sm:py-2 sm:px-8 rounded-full text-base sm:text-lg hover:bg-blue-500"
