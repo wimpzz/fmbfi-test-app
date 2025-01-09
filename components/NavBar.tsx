@@ -18,14 +18,15 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-gray-800 text-white p-4 sticky top-0 z-10">
+    <nav className="bg-gray-900 text-white p-4 sticky top-0 z-10">
       <div className="max-w-8xl mx-auto flex justify-between items-center">
         {/* Logo (left-aligned) */}
         <div className="flex items-center">
           <img
             src="/images/logo.png"
             alt="Logo"
-            className="h-10 w-auto md:h-12 lg:h-16"
+            className="h-12 w-12 md:h-14 md:w-14 lg:h-16 lg:w-16 rounded-full"
+            // style={{ boxShadow: "0 4px 6px rgba(255, 255, 255, 0.5)" }}
           />
           <span className="ml-4 text-lg sm:text-2xl lg:text-4xl font-bold">
             FRANCISCO M BAUTISTA FOUNDATION INC.
@@ -34,13 +35,16 @@ const Navbar: React.FC = () => {
 
         {/* Navbar Links (Hidden on Small and Tablet, Visible on Large Screens) */}
         <div className="hidden xl:flex space-x-6 ml-auto text-2xl items-center">
-          <Link href="/about" className="hover:text-gray-400">
+          <Link href="/about" className="hover:text-red-400 hover:underline">
             About Us
           </Link>
-          <Link href="/demographics" className="hover:text-gray-400">
+          <Link
+            href="/demographics"
+            className="hover:text-red-400 hover:underline"
+          >
             Demographics
           </Link>
-          <Link href="/news" className="hover:text-gray-400">
+          <Link href="/news" className="hover:text-red-400 hover:underline">
             News and Updates
           </Link>
         </div>

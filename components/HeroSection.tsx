@@ -20,10 +20,12 @@ const HeroSection = () => {
           {/* Right Column: Text and Buttons */}
           <div className="flex-1 flex flex-col justify-center lg:text-left px-4 lg:px-8">
             <div className="flex-1">
-              <h1 className="text-4xl sm:text-6xl lg:text-8xl font-bold text-gray-900 mb-6 sm:mb-10">
-                FRANCISCO M BAUTISTA FOUNDATION INC (FMBFI)
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold text-gray-900 mb-6 sm:mb-10">
+                FRANCISCO M BAUTISTA FOUNDATION INC&nbsp;
+                <span className="block sm:inline">(FMBFI)</span>
               </h1>
-              <p className="text-base sm:text-lg md:text-xl lg:text-3xl text-gray-600 mb-6 text-justify max-w-[80ch]">
+
+              <p className="text-base sm:text-lg md:text-xl lg:text-3xl text-gray-700 mb-6 text-justify max-w-[80ch]">
                 The Francisco M Bautista Foundation Incorporated was conceived
                 to serve as the legacy of Francisco Manuel Bautista, who,
                 despite only completing fourth grade, achieved great success in
@@ -41,13 +43,13 @@ const HeroSection = () => {
               <div className="flex flex-col sm:flex-row justify-center sm:justify-start space-y-4 sm:space-y-0 sm:space-x-4">
                 <a
                   href="#features"
-                  className="bg-blue-600 text-white py-2 px-6 sm:py-2 sm:px-8 lg:py-3 lg:px-10 rounded-full text-base sm:text-lg lg:text-xl hover:bg-blue-500 w-full sm:w-[200px] lg:w-[250px] flex justify-center items-center"
+                  className="bg-gray-100 text-red-900 py-2 px-6 sm:py-2 sm:px-8 lg:py-3 lg:px-10 rounded-full text-base sm:text-lg lg:text-xl w-full sm:w-[200px] lg:w-[250px] flex justify-center items-center border-4 border-red-900 hover:bg-red-900 hover:text-white transition-colors duration-300"
                 >
                   APPLY NOW
                 </a>
                 <a
                   href="#login"
-                  className="bg-green-600 text-white py-2 px-6 sm:py-2 sm:px-8 lg:py-3 lg:px-10 rounded-full text-base sm:text-lg lg:text-xl hover:bg-green-500 w-full sm:w-[200px] lg:w-[250px] flex justify-center items-center"
+                  className="bg-red-900 text-white py-2 px-6 sm:py-2 sm:px-8 lg:py-3 lg:px-10 rounded-full text-base sm:text-lg lg:text-xl w-full sm:w-[200px] lg:w-[250px] flex justify-center items-center border-4 border-transparent hover:bg-white hover:text-red-900 hover:border-red-900 transition-colors duration-300"
                 >
                   LOGIN
                 </a>
