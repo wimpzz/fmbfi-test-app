@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import LoginForm from "@/components/LoginForm";
 import Navbar from "@/components/NavBar";
 import HeroSection from "@/components/HeroSection";
-import CountUp from 'react-countup';  // Import the countup library
+import CountUp from "react-countup"; // Import the countup library
 
 const Home = () => {
   const router = useRouter();
@@ -34,7 +34,15 @@ const Home = () => {
   }, []);
 
   // Reusable CountUp Component
-  const CountUpCard = ({ start, end, label }: { start: number; end: number; label: string }) => (
+  const CountUpCard = ({
+    start,
+    end,
+    label,
+  }: {
+    start: number;
+    end: number;
+    label: string;
+  }) => (
     <div className="flex flex-col items-center text-gray-800">
       <h3 className="text-3xl sm:text-5xl font-bold mb-2">
         <CountUp start={start} end={end} duration={3} />
@@ -57,6 +65,24 @@ const Home = () => {
         {/* Hero Section */}
         <HeroSection />
 
+        {/* New Demographic Section */}
+        <section
+          id="demographics"
+          className="min-h-screen flex items-center justify-center bg-gray-100 text-center py-12 px-4 sm:px-6 lg:px-12"
+        >
+          <div className="flex flex-col items-center">
+            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-6">
+              OUR IMPACT
+            </h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-12">
+              <CountUpCard start={0} end={57} label="CITIES" />
+              <CountUpCard start={0} end={616} label="GRADUATES" />
+              <CountUpCard start={0} end={20} label="BATCHES" />
+              <CountUpCard start={0} end={198} label="CURRENT SCHOLARS" />
+            </div>
+          </div>
+        </section>
+
         {/* Features Section Above News Updates */}
         <section
           id="features"
@@ -69,7 +95,9 @@ const Home = () => {
                 FMBFI THROUGH THE YEARS
               </h2>
               <p className="text-lg sm:text-xl text-gray-600 mb-6 sm:mb-8">
-                Add a brief description about this section. This can be any content that introduces the video or other content in this new section.
+                Add a brief description about this section. This can be any
+                content that introduces the video or other content in this new
+                section.
               </p>
             </div>
 
@@ -89,24 +117,6 @@ const Home = () => {
           </div>
         </section>
 
-        {/* New Demographic Section */}
-        <section
-          id="demographics"
-          className="min-h-screen flex items-center justify-center bg-gray-100 text-center py-12 px-4 sm:px-6 lg:px-12"
-        >
-          <div className="flex flex-col items-center">
-            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-6">
-              OUR IMPACT
-            </h2>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-12">
-              <CountUpCard start={0} end={57} label="CITIES" />
-              <CountUpCard start={0} end={616} label="GRADUATES" />
-              <CountUpCard start={0} end={20} label="BATCHES" />
-              <CountUpCard start={0} end={198} label="CURRENT SCHOLARS" />
-            </div>
-          </div>
-        </section>
-
         {/* News and Updates Section */}
         <section
           id="news"
@@ -119,7 +129,9 @@ const Home = () => {
 
           {/* Subheading */}
           <p className="text-lg sm:text-xl text-gray-600 mb-6 px-4 sm:px-8">
-            Stay updated with the latest news and announcements. Here you’ll find all the recent developments and important information about our services.
+            Stay updated with the latest news and announcements. Here you’ll
+            find all the recent developments and important information about our
+            services.
           </p>
 
           {/* Video */}
@@ -142,7 +154,7 @@ const Home = () => {
         >
           <div className="max-w-md mx-auto text-center px-4 sm:px-0">
             <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-6">
-              Login Section
+              LOGIN SECTION
             </h2>
             <LoginForm />
           </div>
