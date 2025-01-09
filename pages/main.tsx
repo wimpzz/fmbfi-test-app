@@ -25,14 +25,17 @@ const Home = () => {
 
         {/* Hero Section */}
         <section className="bg-gray-100 min-h-screen flex items-center justify-center text-center py-8 sm:py-16">
-          <div className="flex flex-col sm:flex-row w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row w-full max-w-screen-2xl mx-auto px-2 sm:px-4 lg:px-6">
             {/* Left Column: Image */}
             <div className="flex-1 mb-6 sm:mb-0 sm:mr-8">
-              <img
-                src="/images/FMBFI.png"
-                alt="Hero Image"
-                className="w-80 h-auto object-cover rounded-lg mx-auto sm:w-64 sm:mx-0"
-              />
+              <div className="inline-block">
+                <img
+                  src="/images/FMBFI.JPG"
+                  alt="Hero Image"
+                  className="w-full sm:w-96 object-cover rounded-lg mx-auto sm:mx-0"
+                  style={{ height: "auto", width: "800px" }}
+                />
+              </div>
             </div>
 
             {/* Right Column: Text and Buttons */}
@@ -41,8 +44,16 @@ const Home = () => {
                 FRANCISCO M BAUTISTA FOUNDATION INC.
               </h1>
               <p className="text-lg sm:text-xl text-gray-600 mb-6">
-                Start your journey with us and explore the amazing features we
-                offer.
+                The Francisco M Bautista Foundation Incorporated was conceived
+                to serve as the legacy of Francisco Manuel Bautista, who,
+                despite only completing fourth grade, achieved great success in
+                life and became the founder of the St Peter Group of Companies.
+                Upon his death, his daughter, Sis Del Bautista-Vitangcol,
+                endeavored to immortalize his name. This endeavor came to
+                fruition through her consultation with Bro Ernie M Burdeos,the
+                Presiding Elder of the St Peter Community, whose subsequent
+                inspiration prompted the inception of a Scholarship Foundation
+                in her father's name.
               </p>
               <div className="flex justify-center sm:justify-start space-x-4">
                 <a
@@ -67,7 +78,7 @@ const Home = () => {
           id="news"
           className="min-h-screen flex items-center justify-center bg-gray-50 text-center py-16"
         >
-          <div className="flex flex-col sm:flex-row w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col sm:flex-row w-full max-w-screen-xl mx-auto px-2 sm:px-4 lg:px-6">
             {/* Left Column: Header and Subheading */}
             <div className="flex-1 sm:mr-8 mb-8 sm:mb-0">
               <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
@@ -90,7 +101,7 @@ const Home = () => {
                   frameBorder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
-                  style={{ height: "500px" }} // Set a custom height
+                  style={{ height: "500px" }}
                 ></iframe>
               </div>
             </div>
@@ -102,7 +113,7 @@ const Home = () => {
           id="features"
           className="min-h-screen flex items-center justify-center bg-gray-50 text-center py-16"
         >
-          <div className="w-full max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full max-w-screen-xl mx-auto px-2 sm:px-4 lg:px-6">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-8 sm:mb-12">
               Our Features
             </h2>
