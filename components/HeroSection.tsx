@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 
 const HeroSection = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -13,7 +13,7 @@ const HeroSection = () => {
   const images = [
     "/images/FMBFI.JPG",
     "/images/SPLPI.PNG",
-    "/images/LOGO.PNG", // Add more images if needed
+    "/images/LOGO.PNG",  // Add more images if needed
   ];
 
   // Check screen size
@@ -59,9 +59,7 @@ const HeroSection = () => {
 
   // Function to go to the previous image
   const prevImage = () => {
-    setCurrentImageIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length
-    );
+    setCurrentImageIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
   };
 
   // Toggle description visibility
@@ -118,7 +116,9 @@ const HeroSection = () => {
           {/* Header and Description for all screens */}
           <div
             className={`${
-              isScrolled && !isSmallScreen ? "lg:block mt-16" : "lg:hidden mt-8"
+              isScrolled && !isSmallScreen
+                ? "lg:block mt-16"
+                : "lg:hidden mt-8"
             }`}
           >
             <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-6">
