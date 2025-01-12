@@ -18,7 +18,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-gray-900 text-white p-3 sticky top-0 z-10">
+    <nav className="bg-white text-d12f27 p-3 sticky top-0 z-10">
       <div className="max-w-8xl mx-auto flex justify-between items-center">
         {/* Logo (left-aligned) */}
         <div className="flex items-center">
@@ -34,16 +34,16 @@ const Navbar: React.FC = () => {
 
         {/* Navbar Links (Hidden on Small and Tablet, Visible on Large Screens) */}
         <div className="hidden xl:flex space-x-10 ml-auto text-lg items-center">
-          <Link href="#about" className="hover:text-red-400 hover:underline">
+          <Link href="#about" className="hover:text-[#c56851] hover:underline">
             About Us
           </Link>
           <Link
             href="#demographics"
-            className="hover:text-red-400 hover:underline"
+            className="hover:text-[#c56851] hover:underline"
           >
             Demographics
           </Link>
-          <Link href="#news" className="hover:text-red-400 hover:underline">
+          <Link href="#news" className="hover:text-[#c56851] hover:underline">
             News and Updates
           </Link>
         </div>
@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
         <div className="flex xl:hidden items-center space-x-3 ml-auto">
           <button
             onClick={openSearchModal}
-            className="text-white p-2 rounded-md"
+            className="text-d12f27 p-2 rounded-md"
           >
             <svg
               className="w-6 h-6"
@@ -81,7 +81,7 @@ const Navbar: React.FC = () => {
         </div>
 
         {/* Hamburger Menu for Mobile and Tablet */}
-        <button className="xl:hidden text-white" onClick={toggleMenu}>
+        <button className="xl:hidden text-d12f27" onClick={toggleMenu}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -104,19 +104,19 @@ const Navbar: React.FC = () => {
         <div className="xl:hidden flex flex-col items-center mt-4">
           <Link
             href="#about"
-            className="py-2 px-5 text-white hover:bg-gray-700 text-lg"
+            className="py-2 px-5 text-d12f27 hover:bg-[#c56851] hover:text-white text-lg"
           >
             About Us
           </Link>
           <Link
             href="#demographics"
-            className="py-2 px-5 text-white hover:bg-gray-700 text-lg"
+            className="py-2 px-5 text-d12f27 hover:bg-[#c56851] hover:text-white text-lg"
           >
             Demographics
           </Link>
           <Link
             href="#news"
-            className="py-2 px-5 text-white hover:bg-gray-700 text-lg"
+            className="py-2 px-5 text-d12f27 hover:bg-[#c56851] hover:text-white text-lg"
           >
             News and Updates
           </Link>
@@ -126,7 +126,7 @@ const Navbar: React.FC = () => {
       {/* Search Modal for Small, Tablet, and Laptop Screens */}
       {isSearchModalOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
-          <div className="bg-white p-4 rounded-md shadow-lg w-3/4 max-w-md">
+          <div className="bg-[#e2b8a7] p-4 rounded-md shadow-lg w-3/4 max-w-md">
             <div className="flex justify-between items-center">
               <input
                 type="text"
@@ -135,7 +135,7 @@ const Navbar: React.FC = () => {
               />
               <button
                 onClick={closeSearchModal}
-                className="text-gray-600 p-3 ml-2"
+                className="text-d12f27 p-3 ml-2"
               >
                 <svg
                   className="w-6 h-6"
