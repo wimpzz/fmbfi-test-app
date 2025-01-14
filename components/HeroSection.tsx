@@ -12,8 +12,8 @@ const HeroSection = () => {
   // Images array
   const images = [
     "/images/FMBFI.JPG",
-    "/images/SPLPI.PNG",
-    "/images/LOGO.PNG",  // Add more images if needed
+    "/images/FMBFI2.JPG",
+    "/images/FMBFI3.JPG",  // Add more images if needed
   ];
 
   // Check screen size

@@ -106,8 +106,8 @@ const Home = () => {
               <div className="inline-block w-full">
                 <iframe
                   className="w-full"
-                  src="https://www.youtube.com/embed/98uCSivvYk8"
-                  title="FMBFI Featured Graduates"
+                  src="https://www.youtube.com/embed/57bNcoTMmxk"
+                  title="FMBFI Through the Years"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   style={{ height: "450px" }}
@@ -138,8 +138,8 @@ const Home = () => {
           <div className="w-full max-w-4xl mx-auto mb-8">
             <iframe
               className="w-full"
-              src="https://www.youtube.com/embed/cQ5Irj5B3FQ"
-              title="FMBFI Featured Graduates"
+              src="https://www.youtube.com/embed/Nfm9dajjhY4"
+              title="KWENTONG FMBFI ALUMNI"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
               style={{ height: "450px" }}
