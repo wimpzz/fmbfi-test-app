@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import Footer from "@/components/Footer";
 import LoginForm from "@/components/LoginForm";
 import Navbar from "@/components/NavBar";
-import HeroSection from "@/components/HeroSection";
+import HeroSection from "@/components/HeroSection2";
 import CountUp from "react-countup"; // Import the countup library
 
 const Home = () => {
@@ -63,6 +63,7 @@ const Home = () => {
         <Navbar />
 
         {/* Hero Section */}
+        {/* <HeroSection /> */}
         <HeroSection />
 
         {/* New Demographic Section */}
