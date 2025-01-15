@@ -61,28 +61,20 @@ const DemographicsSection: React.FC = () => {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-2">
-                CITIES
-              </h3>
-              <p className="text-3xl font-bold text-gray-600">{cities}</p>
+              <h3 className="text-2xl font-semibold text-gray-800 mb-2">CITIES</h3>
+              <p className="text-xl font-bold text-gray-800">{cities}</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-2">
-                GRADUATES
-              </h3>
-              <p className="text-3xl font-bold text-gray-600">{graduates}</p>
+              <h3 className="text-2xl font-semibold text-gray-800 mb-2">GRADUATES</h3>
+              <p className="text-xl font-bold text-gray-800">{graduates}</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-2">
-                BATCHES
-              </h3>
-              <p className="text-3xl font-bold text-gray-600">{batches}</p>
+              <h3 className="text-2xl font-semibold text-gray-800 mb-2">BATCHES</h3>
+              <p className="text-xl font-bold text-gray-800">{batches}</p>
             </div>
             <div className="bg-white p-6 rounded-lg shadow-lg">
-              <h3 className="text-2xl font-semibold text-gray-800 mb-2">
-                CURRENT SCHOLARS
-              </h3>
-              <p className="text-3xl font-bold text-gray-600">{scholars}</p>
+              <h3 className="text-2xl font-semibold text-gray-800 mb-2">SCHOLARS</h3>
+              <p className="text-xl font-bold text-gray-800">{scholars}</p>
             </div>
           </div>
         </div>

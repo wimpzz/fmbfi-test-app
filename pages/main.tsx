@@ -69,7 +69,7 @@ const Home = () => {
         {/* New Demographic Section */}
         <section
           id="demographics"
-          className="min-h-screen flex items-center justify-center bg-gray-100 text-center py-12 px-4 sm:px-6 lg:px-12"
+          className="min-h-screen flex items-center justify-center bg-gray-200 text-center py-12 px-4 sm:px-6 lg:px-12"
         >
           <div className="flex flex-col items-center">
             <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-6">
@@ -87,7 +87,7 @@ const Home = () => {
         {/* Features Section Above News Updates */}
         <section
           id="features"
-          className="min-h-screen flex items-center justify-center bg-gray-200 text-center py-12 px-4 sm:px-6 lg:px-12"
+          className="min-h-screen flex items-center justify-center bg-gray-100 text-center py-12 px-4 sm:px-6 lg:px-12"
         >
           <div className="flex flex-col lg:flex-row w-full max-w-screen-xl mx-auto">
             {/* Left Side Text */}
