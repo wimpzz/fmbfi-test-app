@@ -10,6 +10,7 @@ import DemographicsSection from "@/components/DemographicsSection2";
 import FeaturesSection from "@/components/FeaturesSection";
 import NewsSection from "@/components/NewsSection";
 import AboutUs from "@/components/AboutUs";
+import LoginSection from "@/components/LoginSection";
 
 const Home = () => {
   const router = useRouter();
@@ -61,7 +62,7 @@ const Home = () => {
         <NewsSection />
 
         {/* Login Section */}
-        <section
+        {/* <section
           id="login"
           className="min-h-screen flex items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-12"
         >
@@ -71,7 +72,9 @@ const Home = () => {
             </h2>
             <LoginForm />
           </div>
-        </section>
+        </section> */}
+
+        <LoginSection />
 
         {/* Footer */}
         <Footer />
@@ -81,7 +84,7 @@ const Home = () => {
       {showScroll && (
         <button
           onClick={scrollToTop}
-          className="fixed right-5 flex flex-col items-center justify-center bg-[#d12f27] text-white p-6 rounded-full shadow-lg hover:bg-[#e4532fb9] transition duration-300 z-50"
+          className="fixed right-5 flex flex-col items-center justify-center bg-[#d12f27] text-white p-6 rounded-full shadow-lg hover:bg-[#b3271d] transition duration-300 z-50"
           aria-label="Scroll to top"
           style={{
             bottom: `calc(${footerHeight}px + 16px)`, // Adjusts the button position above the footer

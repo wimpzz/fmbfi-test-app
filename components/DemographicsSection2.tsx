@@ -39,7 +39,7 @@ const DemographicsSection = () => {
       <div className="flex flex-col lg:flex-row w-full max-w-screen-xl mx-auto">
         {/* Left Side Map (Philippines) */}
         <div className="flex-1 flex justify-center items-center mb-8 lg:mb-0">
-          <div className="relative w-full max-w-md">
+          <div className="relative w-full max-w-xs sm:max-w-md">
             <Image
               src="/images/philippines-map.png" // Make sure to place the image in the /public/images folder
               alt="Philippines Map"
@@ -53,14 +53,13 @@ const DemographicsSection = () => {
         {/* Right Side CountUp Cards */}
         <div className="flex-1 flex flex-col justify-center items-center text-center">
           {/* Centered Header */}
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-900 mb-16">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-8 sm:mb-12">
             DEMOGRAPHICS
           </h2>
 
           {/* 2x2 Grid of CountUp Cards */}
-          <div className="grid grid-cols-2 gap-16">
-            {" "}
-            {/* Increased gap */}
+          <div className="grid grid-cols-2 gap-8 sm:gap-12">
+            {/* Keep the grid 2x2 on all screen sizes */}
             <CountUpCard start={0} end={animate ? 57 : 0} label="CITIES" />
             <CountUpCard start={0} end={animate ? 616 : 0} label="GRADUATES" />
             <CountUpCard start={0} end={animate ? 20 : 0} label="BATCHES" />

@@ -57,6 +57,21 @@ const Navbar = () => {
           </Link>
         </div>
 
+        {/* Search Bar and LOGIN Button for Extra Large Screens */}
+        <div className="hidden xl:flex items-center space-x-3 ml-auto">
+          <input
+            type="text"
+            placeholder="Search..."
+            className="p-2 rounded-md text-gray-800 text-lg"
+          />
+          <Link
+            href="#login"
+            className="bg-[#d12f27] text-white px-6 py-2 rounded-full hover:bg-[#b3271d] text-lg" // LOGIN button beside search bar
+          >
+            LOGIN
+          </Link>
+        </div>
+
         {/* Search Icon for Mobile, Tablet, and Laptop */}
         <div className="flex xl:hidden items-center space-x-3 ml-auto">
           <button
@@ -69,15 +84,6 @@ const Navbar = () => {
           </button>
         </div>
 
-        {/* Search Bar always visible on Extra Large Screens */}
-        <div className="hidden xl:flex items-center space-x-3 ml-auto">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="p-2 rounded-md text-gray-800 text-lg"
-          />
-        </div>
-
         {/* Hamburger Menu for Mobile and Tablet */}
         <button className="xl:hidden text-d12f27" onClick={toggleMenu}>
           <FiMenu className="w-6 h-6" />
@@ -86,7 +92,7 @@ const Navbar = () => {
 
       {/* Mobile and Tablet Menu */}
       {isMenuOpen && (
-        <div className="xl:hidden flex flex-col items-center mt-4">
+        <div className="xl:hidden flex flex-col items-center mt-4 bg-white shadow-lg rounded-md p-4">
           <Link
             href="#about"
             className="py-2 px-5 text-d12f27 hover:bg-[#d12f27] hover:text-white text-lg rounded-md"
@@ -104,6 +110,13 @@ const Navbar = () => {
             className="py-2 px-5 text-d12f27 hover:bg-[#d12f27] hover:text-white text-lg rounded-md"
           >
             News and Updates
+          </Link>
+          {/* Login with full width and background color #d12f27 */}
+          <Link
+            href="#login"
+            className="py-2 px-5 bg-[#d12f27] text-white hover:bg-[#b32c21] text-lg rounded-md w-full text-center"
+          >
+            LOGIN
           </Link>
         </div>
       )}
