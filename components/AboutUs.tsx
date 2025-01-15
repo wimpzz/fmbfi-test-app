@@ -4,7 +4,7 @@ const AboutUs = () => {
   return (
     <section
       id="about-us"
-      className="min-h-screen flex flex-col items-center justify-center bg-[#d12f27] text-center py-12 px-6 sm:px-8 lg:px-12"
+      className="min-h-screen flex flex-col items-center justify-center bg-gray-100 text-center py-12 px-6 sm:px-8 lg:px-12"
     >
       {/* About Us Header */}
       <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-6 px-6 sm:px-8 py-4">

@@ -58,13 +58,12 @@ const HeroSection: React.FC = () => {
               FRANCISCO M BAUTISTA FOUNDATION INC
             </h1>
             <p className="text-lg sm:text-xl mb-8">
-            "Go plant it for Me in the heart of a child.”
-              
+              "Go plant it for Me in the heart of a child.”
             </p>
             <a
               href="#about-section"
               onClick={handleLearnMoreClick}
-              className="inline-block bg-d12f27 text-white text-lg py-3 px-8 rounded-md hover:bg-[#c56851] transition-all duration-300"
+              className="inline-block bg-d12f27 text-white text-lg py-3 px-8 rounded-md hover:bg-[#c56851] transition-all duration-300 mt-20"
             >
               Learn More
             </a>
