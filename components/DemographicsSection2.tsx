@@ -41,11 +41,11 @@ const DemographicsSection = () => {
         <div className="flex-1 flex justify-center items-center mb-8 lg:mb-0">
           <div className="relative w-full max-w-xs sm:max-w-md">
             <Image
-              src="/images/philippines-map.png" // Make sure to place the image in the /public/images folder
+              src="/philippines.svg" // Update to SVG file
               alt="Philippines Map"
               width={600}
               height={400}
-              objectFit="contain"
+              objectFit="contain" // Ensures the image scales proportionally
             />
           </div>
         </div>
@@ -58,8 +58,8 @@ const DemographicsSection = () => {
           </h2>
 
           {/* 2x2 Grid of CountUp Cards */}
-          <div className="grid grid-cols-2 gap-8 sm:gap-12">
-            {/* Keep the grid 2x2 on all screen sizes */}
+          <div className="grid grid-cols-4 sm:grid-cols-2 gap-8 sm:gap-12">
+            {/* Keep the grid 2x2 on large screens and single column on small screens */}
             <CountUpCard start={0} end={animate ? 57 : 0} label="CITIES" />
             <CountUpCard start={0} end={animate ? 616 : 0} label="GRADUATES" />
             <CountUpCard start={0} end={animate ? 20 : 0} label="BATCHES" />
