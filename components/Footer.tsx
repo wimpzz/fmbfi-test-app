@@ -3,11 +3,11 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="bg-red-700 text-white py-4">
-      <div className="max-w-5xl mx-auto text-center">
+      <div className="max-w-5xl mx-auto text-center px-4">
         <p className="text-base sm:text-lg md:text-xl">
           © {new Date().getFullYear()} FMBFI. All rights reserved.
         </p>
-        <p className="text-xs sm:text-sm md:text-base">
+        <p className="text-sm sm:text-lg md:text-base">
           <a
             href="/privacy-policy"
             className="text-white hover:text-gray-200 hover:underline px-2 py-1"
@@ -29,9 +29,8 @@ const Footer = () => {
             Contact Us
           </a>
         </p>
-        <p className="text-sm sm:text-base mt-4">
-          Someone cried: "Where must the seed be sown to bring the most fruit
-          when it is grown?"
+        <p className="text-xs sm:text-base mt-4 py-1">
+          "Go plant it for Me in the heart of a child.”
         </p>
       </div>
     </footer>

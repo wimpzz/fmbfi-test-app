@@ -34,7 +34,7 @@ const DemographicsSection = () => {
   return (
     <section
       id="demographics"
-      className="min-h-screen flex items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-12"
+      className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-12"
     >
       <div className="flex flex-col lg:flex-row w-full max-w-screen-xl mx-auto">
         {/* Left Side Map (Philippines) */}

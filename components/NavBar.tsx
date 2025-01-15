@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { FaSearch } from "react-icons/fa"; // Search Icon
+import { AiOutlineClose } from "react-icons/ai"; // Close Icon
+import { FiMenu } from "react-icons/fi"; // Hamburger Menu Icon
 import Link from "next/link";
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
 
@@ -27,23 +30,29 @@ const Navbar: React.FC = () => {
             alt="Logo"
             className="h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full"
           />
-          <span className="ml-3 text-sm sm:text-xl lg:text-2xl font-bold">
+          <span className="ml-3 text-md sm:text-xl lg:text-2xl font-bold">
             FRANCISCO M BAUTISTA FOUNDATION INC.
           </span>
         </div>
 
         {/* Navbar Links (Hidden on Small and Tablet, Visible on Large Screens) */}
         <div className="hidden xl:flex space-x-10 ml-auto text-lg items-center">
-          <Link href="#about" className="hover:text-[#c56851] hover:underline">
+          <Link
+            href="#about"
+            className="hover:bg-[#d12f27] hover:text-white px-3 py-2 rounded-md"
+          >
             About Us
           </Link>
           <Link
             href="#demographics"
-            className="hover:text-[#c56851] hover:underline"
+            className="hover:bg-[#d12f27] hover:text-white px-3 py-2 rounded-md"
           >
             Demographics
           </Link>
-          <Link href="#news" className="hover:text-[#c56851] hover:underline">
+          <Link
+            href="#news"
+            className="hover:bg-[#d12f27] hover:text-white px-3 py-2 rounded-md"
+          >
             News and Updates
           </Link>
         </div>
@@ -52,22 +61,11 @@ const Navbar: React.FC = () => {
         <div className="flex xl:hidden items-center space-x-3 ml-auto">
           <button
             onClick={openSearchModal}
-            className="text-d12f27 p-2 rounded-md"
+            className={`p-2 rounded-md ${
+              isSearchModalOpen ? "text-white bg-d12f27" : "text-d12f27"
+            }`} // Change color when clicked
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M11 4a7 7 0 100 14 7 7 0 000-14zm0 0l7 7"
-              />
-            </svg>
+            <FaSearch className="w-6 h-6" />
           </button>
         </div>
 
@@ -82,20 +80,7 @@ const Navbar: React.FC = () => {
 
         {/* Hamburger Menu for Mobile and Tablet */}
         <button className="xl:hidden text-d12f27" onClick={toggleMenu}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            className="w-6 h-6"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
+          <FiMenu className="w-6 h-6" />
         </button>
       </div>
 
@@ -104,19 +89,19 @@ const Navbar: React.FC = () => {
         <div className="xl:hidden flex flex-col items-center mt-4">
           <Link
             href="#about"
-            className="py-2 px-5 text-d12f27 hover:bg-[#c56851] hover:text-white text-lg"
+            className="py-2 px-5 text-d12f27 hover:bg-[#d12f27] hover:text-white text-lg rounded-md"
           >
             About Us
           </Link>
           <Link
             href="#demographics"
-            className="py-2 px-5 text-d12f27 hover:bg-[#c56851] hover:text-white text-lg"
+            className="py-2 px-5 text-d12f27 hover:bg-[#d12f27] hover:text-white text-lg rounded-md"
           >
             Demographics
           </Link>
           <Link
             href="#news"
-            className="py-2 px-5 text-d12f27 hover:bg-[#c56851] hover:text-white text-lg"
+            className="py-2 px-5 text-d12f27 hover:bg-[#d12f27] hover:text-white text-lg rounded-md"
           >
             News and Updates
           </Link>
@@ -125,32 +110,19 @@ const Navbar: React.FC = () => {
 
       {/* Search Modal for Small, Tablet, and Laptop Screens */}
       {isSearchModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-20">
-          <div className="bg-[#e2b8a7] p-4 rounded-md shadow-lg w-3/4 max-w-md">
-            <div className="flex justify-between items-center">
+        <div className="absolute top-full left-0 w-full z-20">
+          <div className="bg-white p-4 mx-auto w-full max-w-md">
+            <div className="relative">
               <input
                 type="text"
                 placeholder="Search..."
-                className="p-3 rounded-md text-gray-800 w-full text-lg"
+                className="p-3 pl-4 pr-12 rounded-full text-gray-800 w-full text-lg"
               />
               <button
                 onClick={closeSearchModal}
-                className="text-d12f27 p-3 ml-2"
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-d12f27"
               >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
+                <AiOutlineClose className="w-6 h-6" /> 
               </button>
             </div>
           </div>

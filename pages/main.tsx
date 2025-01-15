@@ -1,18 +1,20 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { FaArrowUp } from "react-icons/fa";
 import Footer from "@/components/Footer";
 import LoginForm from "@/components/LoginForm";
 import Navbar from "@/components/NavBar";
 import HeroSection from "@/components/HeroSection2";
 import DemographicsSection from "@/components/DemographicsSection2";
-import FeaturesSection from "@/components/FeaturesSection"; // Import FeaturesSection
-import NewsSection from "@/components/NewsSection"; // Import NewsSection
+import FeaturesSection from "@/components/FeaturesSection";
+import NewsSection from "@/components/NewsSection";
 import AboutUs from "@/components/AboutUs";
 
 const Home = () => {
   const router = useRouter();
   const [showScroll, setShowScroll] = useState(false);
+  const [footerHeight, setFooterHeight] = useState(0);
 
   const handleScroll = () => {
     setShowScroll(window.scrollY > 300);
@@ -23,6 +25,9 @@ const Home = () => {
   };
 
   useEffect(() => {
+    const footer = document.querySelector("footer");
+    setFooterHeight(footer ? footer.offsetHeight : 0);
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
@@ -76,11 +81,14 @@ const Home = () => {
       {showScroll && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 flex items-center bg-red-900 text-white p-4 rounded-full shadow-lg hover:bg-red-500 transition duration-300"
+          className="fixed right-5 flex flex-col items-center justify-center bg-[#d12f27] text-white p-6 rounded-full shadow-lg hover:bg-[#e4532fb9] transition duration-300 z-50"
           aria-label="Scroll to top"
+          style={{
+            bottom: `calc(${footerHeight}px + 16px)`, // Adjusts the button position above the footer
+          }}
         >
-          <span className="mr-2">Back to Top</span>
-          <span>↑</span>
+          <FaArrowUp className="text-md" />{" "}
+          <span className="hidden sm:inline mt-2">Back to Top</span>{" "}
         </button>
       )}
     </main>

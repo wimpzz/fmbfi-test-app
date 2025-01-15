@@ -57,7 +57,7 @@ const HeroSection: React.FC = () => {
   };
 
   return (
-    <section>
+    <section className="bg-white">
       <div
         className="relative w-full h-screen bg-cover bg-center transition-all duration-1000"
         style={{
@@ -75,12 +75,13 @@ const HeroSection: React.FC = () => {
               FRANCISCO M BAUTISTA FOUNDATION INC
             </h1>
             <p className="text-lg sm:text-xl mb-8">
-              "Go plant it for Me in the heart of a child.”
+              Someone cried: "Where must the seed be sown to bring the most
+              fruit when it is grown?"
             </p>
             <a
               href="#about-section"
               onClick={handleLearnMoreClick}
-              className="inline-block bg-d12f27 text-white text-lg py-3 px-8 rounded-md hover:bg-[#c56851] transition-all duration-300 mt-20"
+              className="inline-block bg-d12f27 text-white text-lg py-3 px-8 rounded-md hover:bg-[#d12f27] transition-all duration-300 mt-20"
             >
               Learn More
             </a>
@@ -115,7 +116,7 @@ const HeroSection: React.FC = () => {
         </button>
 
         {/* Dot Navigation */}
-        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20 sm:hidden">
+        <div className="absolute bottom-48 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20 sm:hidden">
           {images.map((_, index) => (
             <div
               key={index}
@@ -133,7 +134,7 @@ const HeroSection: React.FC = () => {
       </div>
 
       <div id="about-section" className="max-w-6xl mx-auto px-6 py-24 lg:py-32">
-        <p className="text-lg leading-relaxed text-justify">
+        <p className="text-xl leading-relaxed text-justify">
           The Francisco M Bautista Foundation Incorporated was conceived to
           serve as the legacy of Francisco Manuel Bautista, who, despite only
           completing fourth grade, achieved great success in life and became the
