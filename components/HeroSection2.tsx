@@ -9,6 +9,7 @@ const images = [
 
 const HeroSection: React.FC = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isHovered, setIsHovered] = useState(false); // State for tracking hover
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -43,8 +44,21 @@ const HeroSection: React.FC = () => {
     );
   };
 
+  // Handle scroll for changing images
+  const handleWheel = (e: React.WheelEvent) => {
+    if (e.deltaY > 0) {
+      // Scroll down -> next image
+      handleNextClick();
+    } else {
+      // Scroll up -> previous image
+      handlePreviousClick();
+    }
+  };
+
   return (
-    <section>
+    <section onWheel={handleWheel}>
+      {" "}
+      {/* Add onWheel event listener */}
       <div
         className="relative w-full h-screen bg-cover bg-center transition-all duration-1000"
         style={{
@@ -52,7 +66,11 @@ const HeroSection: React.FC = () => {
         }}
       >
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        <div className="relative z-10 flex items-center justify-center w-full h-full text-center text-white px-6">
+        <div
+          className={`relative z-10 flex items-center justify-center w-full h-full text-center text-white px-6 transition-opacity duration-500 ease-in-out ${
+            isHovered ? "opacity-0" : "opacity-100"
+          }`} // Change opacity to 0 with a smooth transition
+        >
           <div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               FRANCISCO M BAUTISTA FOUNDATION INC
@@ -70,10 +88,12 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Next and Previous Chevron Buttons */}
+        {/* Next and Previous Chevron Buttons (Hidden on small screens) */}
         <button
           onClick={handlePreviousClick}
-          className="absolute left-5 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 p-3 bg-black bg-opacity-40 rounded-full hover:bg-[#c56851] transition-all duration-300"
+          onMouseEnter={() => setIsHovered(true)} // Set hover state to true on mouse enter
+          onMouseLeave={() => setIsHovered(false)} // Set hover state to false on mouse leave
+          className="absolute left-5 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 p-3 bg-black bg-opacity-40 rounded-full hover:bg-[#c56851] transition-all duration-300 hidden sm:block" // hidden on small screens
           style={{
             border: "none", // Ensuring no border
             cursor: "pointer", // Ensuring it's clickable
@@ -84,7 +104,9 @@ const HeroSection: React.FC = () => {
 
         <button
           onClick={handleNextClick}
-          className="absolute right-5 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 p-3 bg-black bg-opacity-40 rounded-full hover:bg-[#c56851] transition-all duration-300"
+          onMouseEnter={() => setIsHovered(true)} // Set hover state to true on mouse enter
+          onMouseLeave={() => setIsHovered(false)} // Set hover state to false on mouse leave
+          className="absolute right-5 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 p-3 bg-black bg-opacity-40 rounded-full hover:bg-[#c56851] transition-all duration-300 hidden sm:block" // hidden on small screens
           style={{
             border: "none", // Ensuring no border
             cursor: "pointer", // Ensuring it's clickable
@@ -93,7 +115,6 @@ const HeroSection: React.FC = () => {
           <FaChevronRight />
         </button>
       </div>
-
       <div id="about-section" className="max-w-6xl mx-auto px-6 py-24 lg:py-32">
         <p className="text-lg leading-relaxed text-justify">
           The Francisco M Bautista Foundation Incorporated was conceived to
