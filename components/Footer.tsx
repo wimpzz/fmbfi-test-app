@@ -29,8 +29,8 @@ const Footer = () => {
             Contact Us
           </a>
         </p>
-        <p className="text-xs sm:text-base mt-4 py-1">
-          "Go plant it for Me in the heart of a child.”
+        <p className="text-sm sm:text-base mt-4 py-1">
+          "Go plant it for me in the heart of a child.”
         </p>
       </div>
     </footer>
