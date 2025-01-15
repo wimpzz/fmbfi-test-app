@@ -79,7 +79,7 @@ const DemographicsSection = () => {
         {/* Right Side CountUp Cards */}
         <div className="flex-1 flex flex-col justify-center items-center text-center">
           {/* Centered Header */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-8 sm:mb-12">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-6 sm:mb-12">
             DEMOGRAPHICS
           </h2>
 
