@@ -30,7 +30,7 @@ const Navbar = () => {
             alt="Logo"
             className="h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full"
           />
-          <span className="ml-3 text-md sm:text-lg lg:text-2xl font-bold">
+          <span className="ml-3 text-sm sm:text-md lg:text-2xl font-bold">
             FRANCISCO M BAUTISTA FOUNDATION INC.
           </span>
         </div>
@@ -122,7 +122,7 @@ const Navbar = () => {
                 onClick={closeSearchModal}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-d12f27"
               >
-                <AiOutlineClose className="w-6 h-6" /> 
+                <AiOutlineClose className="w-6 h-6" />
               </button>
             </div>
           </div>
