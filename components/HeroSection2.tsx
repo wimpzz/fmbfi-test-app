@@ -61,7 +61,7 @@ const HeroSection: React.FC = () => {
             <a
               href="#about-section"
               onClick={handleLearnMoreClick}
-              className="inline-block bg-d12f27 text-white text-lg py-3 px-8 rounded-md hover:bg-[#c56851]"
+              className="inline-block bg-d12f27 text-white text-lg py-3 px-8 rounded-md hover:bg-[#c56851] transition-all duration-300"
             >
               Learn More
             </a>
@@ -71,11 +71,10 @@ const HeroSection: React.FC = () => {
         {/* Next and Previous Chevron Buttons */}
         <button
           onClick={handlePreviousClick}
-          className="absolute left-5 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20"
+          className="absolute left-5 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 p-3 bg-black bg-opacity-40 rounded-full hover:bg-[#c56851] transition-all duration-300"
           style={{
-            background: "none", // Remove background to make the button only the chevron
-            border: "none", // Remove any borders
-            cursor: "pointer", // Make sure it's clickable
+            border: "none", // Ensuring no border
+            cursor: "pointer", // Ensuring it's clickable
           }}
         >
           <FaChevronLeft />
@@ -83,11 +82,10 @@ const HeroSection: React.FC = () => {
 
         <button
           onClick={handleNextClick}
-          className="absolute right-5 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20"
+          className="absolute right-5 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 p-3 bg-black bg-opacity-40 rounded-full hover:bg-[#c56851] transition-all duration-300"
           style={{
-            background: "none", // Remove background to make the button only the chevron
-            border: "none", // Remove any borders
-            cursor: "pointer", // Make sure it's clickable
+            border: "none", // Ensuring no border
+            cursor: "pointer", // Ensuring it's clickable
           }}
         >
           <FaChevronRight />

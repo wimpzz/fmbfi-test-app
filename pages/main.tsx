@@ -6,6 +6,7 @@ import LoginForm from "@/components/LoginForm";
 import Navbar from "@/components/NavBar";
 import HeroSection from "@/components/HeroSection2";
 import CountUp from "react-countup"; // Import the countup library
+import DemographicsSection from "@/components/DemographicsSection2";
 
 const Home = () => {
   const router = useRouter();
@@ -67,7 +68,7 @@ const Home = () => {
         <HeroSection />
 
         {/* New Demographic Section */}
-        <section
+        {/* <section
           id="demographics"
           className="min-h-screen flex items-center justify-center bg-gray-200 text-center py-12 px-4 sm:px-6 lg:px-12"
         >
@@ -82,7 +83,8 @@ const Home = () => {
               <CountUpCard start={0} end={198} label="CURRENT SCHOLARS" />
             </div>
           </div>
-        </section>
+        </section> */}
+        <DemographicsSection />
 
         {/* Features Section Above News Updates */}
         <section
