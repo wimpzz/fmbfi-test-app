@@ -44,21 +44,20 @@ const HeroSection: React.FC = () => {
     );
   };
 
-  // Handle scroll for changing images
-  const handleWheel = (e: React.WheelEvent) => {
-    if (e.deltaY > 0) {
-      // Scroll down -> next image
-      handleNextClick();
-    } else {
-      // Scroll up -> previous image
-      handlePreviousClick();
-    }
+  const handleDotClick = (index: number) => {
+    setCurrentImageIndex(index);
+  };
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
   };
 
   return (
-    <section onWheel={handleWheel}>
-      {" "}
-      {/* Add onWheel event listener */}
+    <section>
       <div
         className="relative w-full h-screen bg-cover bg-center transition-all duration-1000"
         style={{
@@ -69,7 +68,7 @@ const HeroSection: React.FC = () => {
         <div
           className={`relative z-10 flex items-center justify-center w-full h-full text-center text-white px-6 transition-opacity duration-500 ease-in-out ${
             isHovered ? "opacity-0" : "opacity-100"
-          }`} // Change opacity to 0 with a smooth transition
+          }`}
         >
           <div>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
@@ -88,15 +87,15 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Next and Previous Chevron Buttons (Hidden on small screens) */}
+        {/* Next and Previous Chevron Buttons */}
         <button
           onClick={handlePreviousClick}
-          onMouseEnter={() => setIsHovered(true)} // Set hover state to true on mouse enter
-          onMouseLeave={() => setIsHovered(false)} // Set hover state to false on mouse leave
-          className="absolute left-5 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 p-3 bg-black bg-opacity-40 rounded-full hover:bg-[#c56851] transition-all duration-300 hidden sm:block" // hidden on small screens
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className="absolute left-5 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 p-3 bg-black bg-opacity-40 rounded-full hover:bg-[#c56851] transition-all duration-300 hidden sm:block"
           style={{
-            border: "none", // Ensuring no border
-            cursor: "pointer", // Ensuring it's clickable
+            border: "none",
+            cursor: "pointer",
           }}
         >
           <FaChevronLeft />
@@ -104,17 +103,35 @@ const HeroSection: React.FC = () => {
 
         <button
           onClick={handleNextClick}
-          onMouseEnter={() => setIsHovered(true)} // Set hover state to true on mouse enter
-          onMouseLeave={() => setIsHovered(false)} // Set hover state to false on mouse leave
-          className="absolute right-5 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 p-3 bg-black bg-opacity-40 rounded-full hover:bg-[#c56851] transition-all duration-300 hidden sm:block" // hidden on small screens
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          className="absolute right-5 top-1/2 transform -translate-y-1/2 text-white text-4xl z-20 p-3 bg-black bg-opacity-40 rounded-full hover:bg-[#c56851] transition-all duration-300 hidden sm:block"
           style={{
-            border: "none", // Ensuring no border
-            cursor: "pointer", // Ensuring it's clickable
+            border: "none",
+            cursor: "pointer",
           }}
         >
           <FaChevronRight />
         </button>
+
+        {/* Dot Navigation */}
+        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20 sm:hidden">
+          {images.map((_, index) => (
+            <div
+              key={index}
+              onClick={() => handleDotClick(index)}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              className={`w-3 h-3 rounded-full cursor-pointer ${
+                currentImageIndex === index
+                  ? "bg-white"
+                  : "bg-gray-400 hover:bg-gray-300"
+              } transition-all duration-300`}
+            ></div>
+          ))}
+        </div>
       </div>
+
       <div id="about-section" className="max-w-6xl mx-auto px-6 py-24 lg:py-32">
         <p className="text-lg leading-relaxed text-justify">
           The Francisco M Bautista Foundation Incorporated was conceived to
