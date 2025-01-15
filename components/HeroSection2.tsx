@@ -57,7 +57,10 @@ const HeroSection: React.FC = () => {
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               FRANCISCO M BAUTISTA FOUNDATION INC
             </h1>
-            <p className="text-xl sm:text-3xl mb-8">FMBFI</p>
+            <p className="text-lg sm:text-xl mb-8">
+            "Go plant it for Me in the heart of a child.”
+              
+            </p>
             <a
               href="#about-section"
               onClick={handleLearnMoreClick}
