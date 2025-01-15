@@ -1,13 +1,24 @@
 import { useEffect, useState } from "react";
 import CountUp from "react-countup";
 import Image from "next/image"; // Assuming you're using Next.js for optimized image loading
+import { IoLocationSharp } from "react-icons/io5"; // Pin icon from react-icons
 
 const DemographicsSection = () => {
   const [animate, setAnimate] = useState(false);
+  const [pinPositions, setPinPositions] = useState<Array<{ x: number; y: number }>>([]);
 
   // Trigger animation when the component is mounted
   useEffect(() => {
     setAnimate(true);
+
+    // Generate multiple random positions for the pins
+    const numberOfPins = 10; // Change this to the number of pins you want
+    const positions = Array.from({ length: numberOfPins }, () => ({
+      x: Math.random() * 80 + 10, // Random X between 10% and 90% of width
+      y: Math.random() * 80 + 10, // Random Y between 10% and 90% of height
+    }));
+
+    setPinPositions(positions);
   }, []);
 
   // Reusable CountUp Component
@@ -38,7 +49,7 @@ const DemographicsSection = () => {
     >
       <div className="flex flex-col lg:flex-row w-full max-w-screen-xl mx-auto">
         {/* Left Side Map (Philippines) */}
-        <div className="flex-1 flex justify-center items-center mb-8 lg:mb-0">
+        <div className="flex-1 flex justify-center items-center mb-8 lg:mb-0 relative">
           <div className="relative w-full max-w-xs sm:max-w-md">
             <Image
               src="/philippines.svg" // Update to SVG file
@@ -47,6 +58,21 @@ const DemographicsSection = () => {
               height={400}
               objectFit="contain" // Ensures the image scales proportionally
             />
+            {/* Multiple Pin Icons with Random Positions */}
+            {pinPositions.map((pin, index) => (
+              <div
+                key={index}
+                style={{
+                  position: "absolute",
+                  left: `${pin.x}%`, // X position
+                  top: `${pin.y}%`,  // Y position
+                  transform: "translate(-50%, -50%)", // Center the pin
+                  color: "#d12f27", // Color of the pin
+                }}
+              >
+                <IoLocationSharp size={40} />
+              </div>
+            ))}
           </div>
         </div>
 
