@@ -40,7 +40,7 @@ const AboutUs = () => {
         <div className="bg-[#d12f27] text-white shadow-lg rounded-lg p-8 transform transition-all duration-300 ease-in-out hover:scale-105">
           <div className="relative mb-6">
             <img
-              src="/images/MISSION.jpg" // Replace with actual image path
+              src="/images/MISSION.JPG" // Replace with actual image path
               alt="Mission"
               className="w-full h-48 object-cover rounded-lg mb-4"
             />
@@ -58,7 +58,7 @@ const AboutUs = () => {
         <div className="bg-[#d12f27] text-white shadow-lg rounded-lg p-8 transform transition-all duration-300 ease-in-out hover:scale-105">
           <div className="relative mb-6">
             <img
-              src="/images/VISION.jpg" // Replace with actual image path
+              src="/images/VISION.JPG" // Replace with actual image path
               alt="Vision"
               className="w-full h-48 object-cover rounded-lg mb-4"
             />
