@@ -20,36 +20,29 @@ const FeaturesSection = () => {
       </svg>
 
       <div className="flex flex-col lg:flex-row w-full max-w-screen-xl mx-auto z-10">
-        {/* Left Side Text with adjusted padding */}
-        <div className="flex-1 flex flex-col justify-center text-center lg:text-left px-4 sm:px-6 md:px-8 lg:px-12">
-          <h2 className="text-3xl sm:text-5xl font-bold text-[#d12f27] mb-4 sm:mb-6">
+        {/* Left Side Text with adjusted padding and top alignment */}
+        <div className="flex-1 flex flex-col justify-start lg:justify-center text-center lg:text-left px-4 sm:px-6 md:px-8 lg:px-12 mb-6 lg:mb-0">
+          <h2 className="text-3xl sm:text-5xl font-bold text-[#d12f27] mb-4 sm:mb-6 font-body">
             FMBFI THROUGH THE YEARS
           </h2>
-          <p className="text-lg sm:text-xl text-gray-700 mb-6 sm:mb-8 text-justify">
-            The FMBFI is registered with the Securities and Exchange Commission
-            in 1996. Initially, its funding came from donations from the members
-            and close friends of the St Peter Community, providing assistance to
-            financially challenged but deserving students. Since its
-            incorporation, the FMBFI has been involved in helping 653 students
-            finish their studies. 469 among which have already graduated. Each
-            year, the Qualifying Exam for FMBFI is held as a collaborative
-            effort involving dedicated volunteers from the St Peter Community,
-            the FMBFI Alumni, and its current scholars who serve as proctors,
-            interviewers, technical support, and staff, embodying the spirit of
-            giving back to the foundation.
+          <p className="text-lg sm:text-xl text-gray-700 mb-6 sm:mb-8 text-justify font-open-sans">
+            Ever wonder who FMB is? What is FMBFI? And how did it all come to
+            be, 27 years ago? These captured moments show the dedication,
+            commitment, and contributions given by those behind the Foundation.
           </p>
         </div>
 
-        {/* Right Side Video with adjusted padding */}
-        <div className="flex-1 mb-6 lg:mb-0 flex items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12">
-          <div className="inline-block w-full">
+        {/* Right Side Video with larger width and top alignment */}
+        <div className="flex-1 mb-6 lg:mb-0 flex items-start justify-center px-4 sm:px-6 md:px-8 lg:px-12">
+          <div className="inline-block w-full lg:w-[85%]">
+            {" "}
+            {/* Increased width */}
             <iframe
-              className="w-full"
+              className="w-full h-[500px]" // Adjusted the height
               src="https://www.youtube.com/embed/57bNcoTMmxk"
               title="FMBFI Through the Years"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
-              style={{ height: "450px" }}
             ></iframe>
           </div>
         </div>

@@ -1,13 +1,47 @@
 import React from "react";
+import { FaFacebook, FaYoutube, FaEnvelope } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-red-700 text-white py-4">
+    <footer className="bg-red-700 text-white py-6">
       <div className="max-w-5xl mx-auto text-center px-4">
-        <p className="text-base sm:text-lg md:text-xl">
+        <p className="text-md sm:text-base lg:text-lg font-body mb-2">
+          FRANCISCO M BAUTISTA FOUNDATION, INC
+        </p>
+        <p className="text-xs sm:text-sm font-body">
+          999 Epifanio de los Santos Ave, Project 7, <br />
+          Quezon City, 1105 Metro Manila
+        </p>
+
+        <div className="flex justify-center space-x-4 my-3">
+          <a
+            href="https://www.facebook.com/FmbfiIskolar"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-gray-200"
+          >
+            <FaFacebook size={20} />
+          </a>
+          <a
+            href="https://www.youtube.com/@FranciscoMBautistaFoundation"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-white hover:text-gray-200"
+          >
+            <FaYoutube size={20} />
+          </a>
+          <a
+            href="mailto:fmbfi@stpeter.com.ph"
+            className="text-white hover:text-gray-200"
+          >
+            <FaEnvelope size={20} />
+          </a>
+        </div>
+
+        <p className="text-xs sm:text-sm md:text-base font-body">
           © {new Date().getFullYear()} FMBFI. All rights reserved.
         </p>
-        <p className="text-sm sm:text-lg md:text-base">
+        <p className="text-xs sm:text-sm md:text-base">
           <a
             href="/privacy-policy"
             className="text-white hover:text-gray-200 hover:underline px-2 py-1"
@@ -28,9 +62,6 @@ const Footer = () => {
           >
             Contact Us
           </a>
-        </p>
-        <p className="text-sm sm:text-base mt-4 py-1">
-          "Go plant it for me in the heart of a child.”
         </p>
       </div>
     </footer>

@@ -1,5 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa"; // Import icons from react-icons
+import {
+  FaChevronLeft,
+  FaChevronRight,
+  FaAngleDoubleDown,
+} from "react-icons/fa"; // Import icons from react-icons
 
 const images = [
   "/images/FMBFI.JPG",
@@ -71,20 +75,30 @@ const HeroSection: React.FC = () => {
           }`}
         >
           <div>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold mb-6 font-body">
               FRANCISCO M BAUTISTA FOUNDATION INC
             </h1>
-            <p className="text-lg sm:text-xl mb-8">
+            <p className="text-lg sm:text-xl mb-8 italic font-body">
               Someone cried: "Where must the seed be sown to bring the most
               fruit when it is grown?"
+              <br />
+              The Master heard as He said and smiled, “Go plant it for Me in the
+              heart of a child.”
             </p>
-            <a
-              href="#about-section"
-              onClick={handleLearnMoreClick}
-              className="inline-block bg-d12f27 text-white text-lg py-3 px-8 rounded-md hover:bg-[#d12f27] transition-all duration-300 mt-20"
-            >
-              Learn More
-            </a>
+
+            <div className="text-center relative">
+              <a
+                href="#about-section"
+                onClick={handleLearnMoreClick}
+                className="font-body inline-block bg-d12f27 text-white text-lg py-3 px-8 rounded-md hover:bg-[#d12f27] transition-all duration-300"
+              >
+                Learn More
+              </a>
+              {/* Down Arrow Button Positioned Below the Learn More Button */}
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-10">
+                <FaAngleDoubleDown className="text-white text-4xl animate-bounce" />
+              </div>
+            </div>
           </div>
         </div>
 
@@ -116,13 +130,13 @@ const HeroSection: React.FC = () => {
         </button>
 
         {/* Dot Navigation */}
-        <div className="absolute bottom-48 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20 sm:hidden">
+        <div className="absolute bottom-24 sm:bottom-32 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20 sm:hidden">
           {images.map((_, index) => (
             <div
               key={index}
               onClick={() => handleDotClick(index)}
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
+              // onMouseEnter={handleMouseEnter}
+              // onMouseLeave={handleMouseLeave}
               className={`w-3 h-3 rounded-full cursor-pointer ${
                 currentImageIndex === index
                   ? "bg-white"
@@ -134,7 +148,7 @@ const HeroSection: React.FC = () => {
       </div>
 
       <div id="about-section" className="max-w-6xl mx-auto px-6 py-24 lg:py-32">
-        <p className="text-xl leading-relaxed text-justify">
+        <p className="text-base sm:text-xl leading-relaxed text-justify font-body">
           The Francisco M Bautista Foundation Incorporated was conceived to
           serve as the legacy of Francisco Manuel Bautista, who, despite only
           completing fourth grade, achieved great success in life and became the

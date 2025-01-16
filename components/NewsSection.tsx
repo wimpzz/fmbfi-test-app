@@ -10,15 +10,15 @@ const NewsSection = () => {
       <div className="absolute top-0 left-0 w-full h-[calc(55vh)] bg-[#d12f27] rounded-b-full z-0"></div>
 
       {/* Header */}
-      <h2 className="text-3xl sm:text-5xl font-bold text-white mb-6 px-4 sm:px-8 relative z-10">
+      <h2 className="text-3xl sm:text-5xl font-body font-extrabold text-white mb-6 px-4 sm:px-8 relative z-10">
         LATEST NEWS & UPDATES
       </h2>
 
       {/* Subheading */}
-      <p className="text-lg sm:text-xl text-white mb-6 px-4 sm:px-8 relative z-10">
-        Stay updated with the latest news and announcements. Here you’ll find
-        all the recent developments and important information about our
-        services.
+      <p className="text-lg sm:text-xl font-body text-white mb-6 px-4 sm:px-8 relative z-10">
+        FMBFI GRADUATES FEATURED
+        <br />
+        Stay updated with the latest news and announcements.
       </p>
 
       {/* Video */}

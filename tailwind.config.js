@@ -6,9 +6,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily:{
-        title: ["Oswald", "sans-serif"],
-        body: ["Poppins"]
+      fontFamily: {
+        heading: ['Lato', 'sans-serif'],
+        body: ['Montserrat', 'sans-serif'],
       },
     },
   },
