@@ -1,12 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa"; // Search Icon
 import { AiOutlineClose } from "react-icons/ai"; // Close Icon
 import { FiMenu } from "react-icons/fi"; // Hamburger Menu Icon
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false); // New state for login status
+  const router = useRouter();
+
+  // Check if user is logged in (this could be done via cookies, localStorage, or context)
+  useEffect(() => {
+    const user = localStorage.getItem("user"); // Example: check for user data in localStorage
+    if (user) {
+      setIsLoggedIn(true);
+    }
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -18,6 +29,12 @@ const Navbar = () => {
 
   const closeSearchModal = () => {
     setIsSearchModalOpen(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("user"); // Remove user data from localStorage
+    setIsLoggedIn(false);
+    router.push("/login"); // Redirect to login page
   };
 
   return (
@@ -63,13 +80,22 @@ const Navbar = () => {
             APPLY NOW
           </Link>
 
-          {/* Login Button */}
-          <Link
-            href="#login"
-            className="bg-[#d12f27] text-white px-6 py-2 rounded-full hover:bg-[#b3271d] text-lg font-body font-semibold"
-          >
-            LOG-IN
-          </Link>
+          {/* Conditionally render Login/Logout Button */}
+          {isLoggedIn ? (
+            <button
+              onClick={handleLogout}
+              className="bg-[#d12f27] text-white px-6 py-2 rounded-full hover:bg-[#b3271d] text-lg font-body font-semibold"
+            >
+              LOG-OUT
+            </button>
+          ) : (
+            <Link
+              href="#login"
+              className="bg-[#d12f27] text-white px-6 py-2 rounded-full hover:bg-[#b3271d] text-lg font-body font-semibold"
+            >
+              LOG-IN
+            </Link>
+          )}
         </div>
         {/* Search Icon for Mobile, Tablet, Laptop, and XL screens */}
         <div className="flex items-center space-x-3 ml-auto xl:ml-0">
@@ -122,19 +148,28 @@ const Navbar = () => {
             >
               APPLY NOW
             </Link>
-            <Link
-              href="#login"
-              className="py-2 px-5 bg-[#d12f27] text-white hover:bg-[#b32c21] text-base sm:text-lg rounded-md w-full text-center font-body"
-            >
-              LOG-IN
-            </Link>
+            {isLoggedIn ? (
+              <button
+                onClick={handleLogout}
+                className="py-2 px-5 bg-[#d12f27] text-white hover:bg-[#b32c21] text-base sm:text-lg rounded-md w-full text-center font-body"
+              >
+                LOG-OUT
+              </button>
+            ) : (
+              <Link
+                href="#login"
+                className="py-2 px-5 bg-[#d12f27] text-white hover:bg-[#b32c21] text-base sm:text-lg rounded-md w-full text-center font-body"
+              >
+                LOG-IN
+              </Link>
+            )}
           </div>
         </div>
       )}
 
       {/* Search Modal for Small, Tablet, and Laptop Screens */}
       {isSearchModalOpen && (
-        <div className="absolute top-full right-0 lg:right-0 w-full max-w-md z-20 ">
+        <div className="absolute top-full right-0 lg:right-0 w-full max-w-md z-20">
           <div className="bg-white p-4 mx-auto lg:w-auto">
             <div className="relative">
               <input
@@ -146,7 +181,7 @@ const Navbar = () => {
                 onClick={closeSearchModal}
                 className="absolute right-2 top-1/2 transform -translate-y-1/2 text-d12f27"
               >
-                <AiOutlineClose className="w-5 h-5" />{" "}
+                <AiOutlineClose className="w-5 h-5" />
               </button>
             </div>
           </div>

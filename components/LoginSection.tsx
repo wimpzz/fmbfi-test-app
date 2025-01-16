@@ -1,7 +1,33 @@
 import { useState } from "react";
+import { useRouter } from "next/router"; // Import useRouter for routing
 
 const LoginSection = () => {
   const [activeTab, setActiveTab] = useState<"scholar" | "admin">("scholar");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [message, setMessage] = useState("");
+  const router = useRouter(); // Initialize useRouter hook
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
+    const response = await fetch("/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    });
+
+    const data = await response.json();
+
+    if (response.ok) {
+      router.push({
+        pathname: "/user",
+        query: { ...data.user },
+      });
+    } else {
+      setMessage(data.message || "Login failed"); // Show the error message from the server
+    }
+  };
 
   return (
     <section
@@ -61,50 +87,105 @@ const LoginSection = () => {
         {/* Form for both tabs */}
         <div>
           <h2 className="text-2xl sm:text-3xl mb-4 sm:mb-6 font-semibold text-[#2a2a2a] font-body">
-            {activeTab === "scholar" ? "Scholar Login" : "Admin Login"}
+            {activeTab === "scholar" ? "Scholar Log-in" : "Admin Log-in"}
           </h2>
 
-          <form>
-            <div className="mb-4 sm:mb-5">
-              <label
-                htmlFor="email"
-                className="block text-sm sm:text-base font-medium text-gray-600 font-body"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                className="w-full p-3 sm:p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d12f27] focus:border-[#d12f27] font-body"
-                required
-                aria-describedby="emailHelp"
-                placeholder="Enter your email"
-              />
-            </div>
+          {/* Conditional rendering of form based on active tab */}
+          {activeTab === "scholar" ? (
+            <form className="py-8 space-y-6" onSubmit={handleSubmit}>
+              {message && (
+                <div className="bg-red-500 text-white p-4 rounded-md">
+                  {message}
+                </div>
+              )}
 
-            <div className="mb-4 sm:mb-5">
-              <label
-                htmlFor="password"
-                className="block text-sm sm:text-base font-medium text-gray-600 font-body"
-              >
-                Password
-              </label>
-              <input
-                type="password"
-                id="password"
-                className="w-full p-3 sm:p-4 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#d12f27] focus:border-[#d12f27] font-body"
-                required
-                placeholder="Enter your password"
-              />
-            </div>
+              <div className="flex items-center justify-center">
+                <label htmlFor="email" className="sr-only">
+                  Email
+                </label>
+                <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                  name="email"
+                  id="email"
+                  className="shadow-md focus:ring-red-900 focus:border-red-900 block w-full max-w-lg sm:text-lg lg:text-xl border-gray-300 rounded-md p-4"
+                  placeholder="Your Email"
+                />
+              </div>
 
-            <button
-              type="submit"
-              className="w-full py-3 sm:py-4 bg-[#d12f27] text-white rounded-lg shadow-lg hover:bg-[#e4532f] focus:outline-none transition duration-300 font-body"
-            >
-              {activeTab === "scholar" ? "Login as Scholar" : "Login as Admin"}
-            </button>
-          </form>
+              <div className="flex items-center justify-center">
+                <label htmlFor="password" className="sr-only">
+                  Password
+                </label>
+                <input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                  name="password"
+                  id="password"
+                  className="shadow-md focus:ring-red-900 focus:border-red-900 block w-full max-w-lg sm:text-lg lg:text-xl border-gray-300 rounded-md p-4"
+                  placeholder="Your StudentId"
+                />
+              </div>
+
+              <div className="flex items-center justify-center">
+                <button
+                  type="submit"
+                  className="flex items-center justify-center w-full max-w-lg rounded-md shadow py-4 px-6 text-lg sm:text-xl lg:text-2xl text-white bg-red-900 hover:bg-white hover:text-red-900 border-4 border-transparent hover:border-red-900 transition-colors duration-300"
+                >
+                  Log-in
+                </button>
+              </div>
+            </form>
+          ) : (
+            <form className="py-8 space-y-6">
+              {message && (
+                <div className="bg-red-500 text-white p-4 rounded-md">
+                  {message}
+                </div>
+              )}
+
+              <div className="flex items-center justify-center">
+                <label htmlFor="email-admin" className="sr-only">
+                  Admin Email
+                </label>
+                <input
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="email"
+                  name="email"
+                  id="email-admin"
+                  className="shadow-md focus:ring-red-900 focus:border-red-900 block w-full max-w-lg sm:text-lg lg:text-xl border-gray-300 rounded-md p-4"
+                  placeholder="Admin Email"
+                />
+              </div>
+
+              <div className="flex items-center justify-center">
+                <label htmlFor="password-admin" className="sr-only">
+                  Password
+                </label>
+                <input
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  type="password"
+                  name="password"
+                  id="password-admin"
+                  className="shadow-md focus:ring-red-900 focus:border-red-900 block w-full max-w-lg sm:text-lg lg:text-xl border-gray-300 rounded-md p-4"
+                  placeholder="Your Admin Password"
+                />
+              </div>
+
+              <div className="flex items-center justify-center">
+                <button
+                  type="submit"
+                  className="flex items-center justify-center w-full max-w-lg rounded-md shadow py-4 px-6 text-lg sm:text-xl lg:text-2xl text-white bg-red-900 hover:bg-white hover:text-red-900 border-4 border-transparent hover:border-red-900 transition-colors duration-300"
+                >
+                  Log-in
+                </button>
+              </div>
+            </form>
+          )}
         </div>
       </div>
     </section>
