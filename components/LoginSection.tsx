@@ -22,9 +22,18 @@ const LoginSection = () => {
       <div className="absolute inset-0 bg-black opacity-40"></div>
 
       {/* Content Container */}
-      <div className="bg-white p-6 sm:p-8 md:p-10 rounded-lg shadow-xl w-[90%] sm:w-[400px] relative z-10">
+      <div className="bg-white p-6 sm:p-8 md:p-10 rounded-lg shadow-xl w-[90%] sm:w-[400px] relative z-10 mt-12 sm:mt-16 md:mt-20">
+        {/* Logo Centered at the Top (Bottom Half Sticking to Top) */}
+        <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mb-6">
+          <img
+            src="/images/logo.png" // Replace with your logo image path
+            alt="Logo"
+            className="w-24 h-auto" // Adjust size as needed
+          />
+        </div>
+
         {/* Tab Navigation */}
-        <div className="flex justify-center space-x-4 sm:space-x-6 border-b pb-4 mb-6">
+        <div className="flex justify-center space-x-4 sm:space-x-6 border-b pb-4 mb-6 pt-6 sm:pt-8 md:pt-10">
           <button
             aria-selected={activeTab === "scholar" ? "true" : "false"}
             className={`text-lg sm:text-xl font-extrabold ${

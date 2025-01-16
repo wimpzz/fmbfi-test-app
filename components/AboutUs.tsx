@@ -7,19 +7,19 @@ const AboutUs = () => {
       className="min-h-screen flex flex-col items-center justify-center bg-white text-center py-16 px-6 sm:px-8 lg:px-16 xl:px-24 pt-12"
     >
       {/* About Us Header */}
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-body font-bold text-white bg-[#d12f27] mb-8 px-8 sm:px-10 py-6 sm:py-8 rounded-lg shadow-lg">
+      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-body font-extrabold text-black mb-8 px-8 sm:px-10 py-6 sm:py-8 ">
         ABOUT US
       </h2>
 
       {/* Cards Container */}
       <div className="w-full max-w-full mx-auto grid grid-cols-1 sm:grid-cols-1 lg:grid-cols-3 gap-8 px-6 sm:px-8 py-8 lg:px-12 xl:px-16">
         {/* Core Values Card */}
-        <div className="bg-[#d12f27] text-white shadow-lg rounded-lg p-8 transform transition-all duration-300 ease-in-out hover:scale-105">
+        <div className="bg-[#d12f27] text-white shadow-lg rounded-lg p-10 min-h-[400px] transform transition-all duration-300 ease-in-out hover:scale-105">
           <div className="relative mb-6">
             <img
-              src="/images/FMBFI.jpg" // Replace with actual image path
+              src="/images/CORE.JPG" // Replace with actual image path
               alt="Core Values"
-              className="w-full h-48 object-cover rounded-lg mb-4"
+              className="w-full h-64 object-cover rounded-lg mb-4" // Increased image height
             />
             <h3 className="text-xl sm:text-2xl font-body font-bold text-white mb-6">
               Core Values
@@ -37,12 +37,12 @@ const AboutUs = () => {
         </div>
 
         {/* Mission Card */}
-        <div className="bg-[#d12f27] text-white shadow-lg rounded-lg p-8 transform transition-all duration-300 ease-in-out hover:scale-105">
+        <div className="bg-[#d12f27] text-white shadow-lg rounded-lg p-10 min-h-[400px] transform transition-all duration-300 ease-in-out hover:scale-105">
           <div className="relative mb-6">
             <img
               src="/images/MISSION.JPG" // Replace with actual image path
               alt="Mission"
-              className="w-full h-48 object-cover rounded-lg mb-4"
+              className="w-full h-64 object-cover rounded-lg mb-4" // Increased image height
             />
             <h3 className="text-xl sm:text-2xl font-body font-bold text-white mb-6">
               Mission
@@ -55,12 +55,12 @@ const AboutUs = () => {
         </div>
 
         {/* Vision Card */}
-        <div className="bg-[#d12f27] text-white shadow-lg rounded-lg p-8 transform transition-all duration-300 ease-in-out hover:scale-105">
+        <div className="bg-[#d12f27] text-white shadow-lg rounded-lg p-10 min-h-[400px] transform transition-all duration-300 ease-in-out hover:scale-105">
           <div className="relative mb-6">
             <img
               src="/images/VISION.jpg" // Replace with actual image path
               alt="Vision"
-              className="w-full h-48 object-cover rounded-lg mb-4"
+              className="w-full h-64 object-cover rounded-lg mb-4" // Increased image height
             />
             <h3 className="text-xl sm:text-2xl font-body font-bold text-white mb-6">
               Vision

@@ -163,6 +163,12 @@ const HeroSection: React.FC = () => {
           honor the legacy of Francisco M. Bautista by supporting the education
           of deserving students and making a positive impact on the community.
         </p>
+        <p className="text-base sm:text-xl leading-relaxed text-justify font-body">
+          <br />
+          Up to this day, with the financial support of the St Peter Group of
+          Companies, the foundation remains committed to assisting College
+          students nationwide.
+        </p>
       </div>
     </section>
   );

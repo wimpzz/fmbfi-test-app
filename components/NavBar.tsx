@@ -68,7 +68,7 @@ const Navbar = () => {
             href="#login"
             className="bg-[#d12f27] text-white px-6 py-2 rounded-full hover:bg-[#b3271d] text-lg font-body font-semibold"
           >
-            LOGIN
+            LOG-IN
           </Link>
         </div>
         {/* Search Icon for Mobile, Tablet, Laptop, and XL screens */}
@@ -126,7 +126,7 @@ const Navbar = () => {
               href="#login"
               className="py-2 px-5 bg-[#d12f27] text-white hover:bg-[#b32c21] text-base sm:text-lg rounded-md w-full text-center font-body"
             >
-              LOGIN
+              LOG-IN
             </Link>
           </div>
         </div>

@@ -15,7 +15,7 @@ const NewsSection = () => {
       </h2>
 
       {/* Subheading */}
-      <p className="text-lg sm:text-xl font-body text-white mb-6 px-4 sm:px-8 relative z-10">
+      <p className="text-lg sm:text-xl font-body text-white mb-6 px-4 sm:px-8 relative z-10 italic">
         FMBFI GRADUATES FEATURED
         <br />
         Stay updated with the latest news and announcements.

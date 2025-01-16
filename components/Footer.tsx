@@ -5,17 +5,16 @@ const Footer = () => {
   return (
     <footer className="bg-red-700 text-white py-6">
       <div className="max-w-5xl mx-auto text-center px-4">
-        <p className="text-md sm:text-base lg:text-lg font-body mb-2">
+        <p className="text-md sm:text-base lg:text-xl font-body font-bold mb-2">
           FRANCISCO M BAUTISTA FOUNDATION, INC
         </p>
-        <p className="text-xs sm:text-sm font-body">
-          999 Epifanio de los Santos Ave, Project 7, <br />
-          Quezon City, 1105 Metro Manila
+        <p className="text-xs sm:text-sm lg:text-base font-body lg:whitespace-nowrap">
+          999 Epifanio de los Santos Ave, Project 7, Quezon City, 1105 Metro Manila
         </p>
 
         <div className="flex justify-center space-x-4 my-3">
           <a
-            href="https://www.facebook.com/FmbfiIskolar"
+            href="https://www.facebook.com/profile.php?id=100088884865950"
             target="_blank"
             rel="noopener noreferrer"
             className="text-white hover:text-gray-200"
@@ -38,10 +37,10 @@ const Footer = () => {
           </a>
         </div>
 
-        <p className="text-xs sm:text-sm md:text-base font-body">
+        <p className="text-xs sm:text-sm md:text-base lg:text-lg font-body">
           © {new Date().getFullYear()} FMBFI. All rights reserved.
         </p>
-        <p className="text-xs sm:text-sm md:text-base">
+        <p className="text-xs sm:text-sm md:text-base lg:text-lg">
           <a
             href="/privacy-policy"
             className="text-white hover:text-gray-200 hover:underline px-2 py-1"

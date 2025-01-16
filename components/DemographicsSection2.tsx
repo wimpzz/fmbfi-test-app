@@ -60,17 +60,37 @@ const DemographicsSection = () => {
         {/* Right Side CountUp Cards */}
         <div className="flex-1 flex flex-col justify-center items-center text-center">
           {/* Centered Header */}
-          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-6 sm:mb-12 font-body">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-6 sm:mb-12 font-body">
             OUR IMPACT
           </h2>
 
           {/* 2x2 Grid of CountUp Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8 md:gap-12 font-body">
             {/* Keep the grid 2x2 on large screens and single column on small screens */}
-            <CountUpCard start={0} end={animate ? 57 : 0} label="CITIES" subLabel="PHILIPPINES" />
-            <CountUpCard start={0} end={animate ? 616 : 0} label="GRADUATES" subLabel="FMBFI ALUMNI" />
-            <CountUpCard start={0} end={animate ? 20 : 0} label="BATCHES" subLabel="SINCE 1996" />
-            <CountUpCard start={0} end={animate ? 198 : 0} label="CURRENT SCHOLARS" subLabel="2020-2024" />
+            <CountUpCard
+              start={0}
+              end={animate ? 57 : 0}
+              label="CITIES"
+              subLabel="PHILIPPINES"
+            />
+            <CountUpCard
+              start={0}
+              end={animate ? 616 : 0}
+              label="GRADUATES"
+              subLabel="FMBFI ALUMNI"
+            />
+            <CountUpCard
+              start={0}
+              end={animate ? 20 : 0}
+              label="BATCHES"
+              subLabel="SINCE 1996"
+            />
+            <CountUpCard
+              start={0}
+              end={animate ? 198 : 0}
+              label="CURRENT SCHOLARS"
+              subLabel="2020-2024"
+            />
           </div>
         </div>
       </div>
