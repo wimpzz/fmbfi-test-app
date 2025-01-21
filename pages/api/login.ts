@@ -1,10 +1,8 @@
+// pages/api/login.ts
 import { NextApiRequest, NextApiResponse } from "next";
 import { google } from "googleapis";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Only POST requests are allowed" });
   }
@@ -16,6 +14,7 @@ export default async function handler(
   }
 
   try {
+    // Authenticate Google Sheets API
     const auth = new google.auth.GoogleAuth({
       credentials: {
         client_email: process.env.GOOGLE_CLIENT_EMAIL,
@@ -26,35 +25,33 @@ export default async function handler(
 
     const sheets = google.sheets({ auth, version: "v4" });
 
+    // Fetch data from Google Sheets
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: "Sheet2!A2:Z1000", // Adjusted range for all columns
+      range: "Sheet1!A2:D1000", // Adjust range if needed to cover all rows
     });
 
-    const rows = response.data.values || [];
-    const user = rows.find(
-      ([studentId, , , , , , , , , , , , , emailField]) => studentId === password && emailField === email
-    );
+    const rows = response.data.values;
 
-    if (!user) {
-      return res.status(401).json({ message: "User not existed in database" });
+    if (!rows || rows.length === 0) {
+      return res.status(404).json({ message: "No users found" });
     }
 
-    // Destructure to get user details
-    const [
-      studentId, no, batch, sy, year, category, status, lastName, firstName,
-      middleName, school, course, duration, emailField, mobileNumber, facebook, address
-    ] = user;
+    // Find the user with matching email and password
+    const user = rows.find((row) => row[0] === email && row[2] === password); // Email in column 0, Password in column 2
 
-    return res.status(200).json({
-      message: "Login successful",
-      user: {
-        studentId, no, batch, sy, year, category, status, lastName, firstName,
-        middleName, school, course, duration, emailField, mobileNumber, facebook, address
-      },
-    });
+    if (!user) {
+      return res.status(401).json({ message: "Invalid email or password" });
+    }
+
+    // Assuming the user data contains the role in column B (index 1) and name in column D (index 3)
+    const role = user[1];  // Role from column B
+    const name = user[3];  // Name from column D
+
+    // Return user data with role and name
+    return res.status(200).json({ email, role, name });
   } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Something went wrong" });
+    console.error("Error fetching Google Sheets data:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
 }

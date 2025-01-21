@@ -10,7 +10,7 @@ import DemographicsSection from "@/components/DemographicsSection2";
 import FeaturesSection from "@/components/FeaturesSection";
 import NewsSection from "@/components/NewsSection";
 import AboutUs from "@/components/AboutUs";
-import LoginSection from "@/components/LoginSection";
+import LoginSection from "@/components/LoginForm2";
 
 const Home = () => {
   const router = useRouter();
@@ -47,19 +47,19 @@ const Home = () => {
         <Navbar />
 
         {/* Hero Section */}
-        <HeroSection />
+        {/* <HeroSection /> */}
 
         {/* About Us Section */}
-        <AboutUs />
+        {/* <AboutUs /> */}
 
         {/* Demographic Section */}
-        <DemographicsSection />
+        {/* <DemographicsSection /> */}
 
         {/* Features Section */}
-        <FeaturesSection />
+        {/* <FeaturesSection /> */}
 
         {/* News Section */}
-        <NewsSection />
+        {/* <NewsSection /> */}
 
         {/* Login Section */}
         {/* <section
@@ -74,10 +74,10 @@ const Home = () => {
           </div>
         </section> */}
 
-        <LoginSection />
+        {/* <LoginSection /> */}
 
         {/* Footer */}
-        <Footer />
+        {/* <Footer /> */}
       </div>
 
       {/* Back to Top Button */}

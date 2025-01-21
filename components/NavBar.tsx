@@ -4,6 +4,7 @@ import { AiOutlineClose } from "react-icons/ai"; // Close Icon
 import { FiMenu } from "react-icons/fi"; // Hamburger Menu Icon
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { signIn } from "next-auth/react";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -91,6 +92,9 @@ const Navbar = () => {
           ) : (
             <Link
               href="#login"
+              onClick={() => {
+                signIn();
+              }}
               className="bg-[#d12f27] text-white px-6 py-2 rounded-full hover:bg-[#b3271d] text-lg font-body font-semibold"
             >
               LOG-IN
@@ -159,6 +163,9 @@ const Navbar = () => {
               <Link
                 href="#login"
                 className="py-2 px-5 bg-[#d12f27] text-white hover:bg-[#b32c21] text-base sm:text-lg rounded-md w-full text-center font-body"
+                onClick={() => {
+                  signIn();
+                }}
               >
                 LOG-IN
               </Link>
