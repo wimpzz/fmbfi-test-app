@@ -1,4 +1,3 @@
-// pages/api/login.ts
 import { NextApiRequest, NextApiResponse } from "next";
 import { google } from "googleapis";
 
@@ -28,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Fetch data from Google Sheets
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: "Sheet1!A2:D1000", // Adjust range if needed to cover all rows
+      range: "Sheet1!A2:C1000", // Assuming columns A, B, C are Email, Password, and Role
     });
 
     const rows = response.data.values;
@@ -38,18 +37,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     // Find the user with matching email and password
-    const user = rows.find((row) => row[0] === email && row[2] === password); // Email in column 0, Password in column 2
+    const user = rows.find((row) => row[0] === email && row[1] === password);
 
     if (!user) {
       return res.status(401).json({ message: "Invalid email or password" });
     }
 
-    // Assuming the user data contains the role in column B (index 1) and name in column D (index 3)
-    const role = user[1];  // Role from column B
-    const name = user[3];  // Name from column D
+    // Assuming the user data contains the role in column C (index 2)
+    const role = user[2];
 
-    // Return user data with role and name
-    return res.status(200).json({ email, role, name });
+    // Return user data with role
+    return res.status(200).json({ email, role });
   } catch (error) {
     console.error("Error fetching Google Sheets data:", error);
     return res.status(500).json({ message: "Internal Server Error" });

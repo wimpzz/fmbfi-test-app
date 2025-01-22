@@ -3,14 +3,13 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { FaArrowUp } from "react-icons/fa";
 import Footer from "@/components/Footer";
-import LoginForm from "@/components/LoginForm";
 import Navbar from "@/components/NavBar";
 import HeroSection from "@/components/HeroSection2";
 import DemographicsSection from "@/components/DemographicsSection2";
 import FeaturesSection from "@/components/FeaturesSection";
 import NewsSection from "@/components/NewsSection";
 import AboutUs from "@/components/AboutUs";
-import LoginSection from "@/components/LoginForm2";
+import { signIn } from "next-auth/react";
 
 const Home = () => {
   const router = useRouter();
@@ -46,38 +45,31 @@ const Home = () => {
         {/* Navbar */}
         <Navbar />
 
+        {/* <button
+          onClick={() => {
+            signIn();
+          }}
+        >
+          Sign In
+        </button> */}
+
         {/* Hero Section */}
-        {/* <HeroSection /> */}
+        <HeroSection />
 
         {/* About Us Section */}
-        {/* <AboutUs /> */}
+        <AboutUs />
 
         {/* Demographic Section */}
-        {/* <DemographicsSection /> */}
+        <DemographicsSection />
 
         {/* Features Section */}
-        {/* <FeaturesSection /> */}
+        <FeaturesSection />
 
         {/* News Section */}
-        {/* <NewsSection /> */}
-
-        {/* Login Section */}
-        {/* <section
-          id="login"
-          className="min-h-screen flex items-center justify-center bg-white py-12 px-4 sm:px-6 lg:px-12"
-        >
-          <div className="max-w-md mx-auto text-center px-4 sm:px-0">
-            <h2 className="text-3xl sm:text-5xl font-bold text-gray-900 mb-6">
-              LOGIN SECTION
-            </h2>
-            <LoginForm />
-          </div>
-        </section> */}
-
-        {/* <LoginSection /> */}
+        <NewsSection />
 
         {/* Footer */}
-        {/* <Footer /> */}
+        <Footer />
       </div>
 
       {/* Back to Top Button */}

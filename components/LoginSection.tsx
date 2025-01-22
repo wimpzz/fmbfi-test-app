@@ -1,33 +1,57 @@
-import { useState } from "react";
-import { useRouter } from "next/router"; // Import useRouter for routing
+"use client";
+
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/router"; // Import useRouter
+import { useState, useEffect } from "react";
 
 const LoginSection = () => {
-  const [activeTab, setActiveTab] = useState<"scholar" | "admin">("scholar");
+  const { data: session, status } = useSession();
+  const router = useRouter(); // Initialize useRouter
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
-  const router = useRouter(); // Initialize useRouter hook
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const response = await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+    setErrorMessage(""); // Clear previous error message
+
+    // Call signIn with credentials provider
+    const res = await signIn("credentials", {
+      redirect: false,
+      email,
+      password,
     });
 
-    const data = await response.json();
-
-    if (response.ok) {
-      router.push({
-        pathname: "/user",
-        query: { ...data.user },
-      });
-    } else {
-      setMessage(data.message || "Login failed"); // Show the error message from the server
+    if (res?.error) {
+      setErrorMessage(res.error); // Set error message if login fails
+    } else if (res?.ok) {
+      // After successful login, navigate based on the role
+      if (session?.user?.role === "Admin") {
+        router.push("/admin/dashboard");
+      } else if (session?.user?.role === "User") {
+        router.push("/user/dashboard");
+      }
     }
   };
+
+  // Check the session and navigate on initial load or session change
+  useEffect(() => {
+    if (status === "loading") return; // Prevent unnecessary redirects while loading
+
+    if (session) {
+      // Session exists, navigate based on the role
+      if (session.user?.role === "Admin") {
+        router.push("/admin/dashboard");
+      } else if (session.user?.role === "User") {
+        router.push("/user/dashboard");
+      }
+    }
+  }, [session, status, router]);
+
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
 
   return (
     <section
@@ -58,44 +82,22 @@ const LoginSection = () => {
           />
         </div>
 
-        {/* Tab Navigation */}
-        <div className="flex justify-center space-x-4 sm:space-x-6 border-b pb-4 mb-6 pt-6 sm:pt-8 md:pt-10">
-          <button
-            aria-selected={activeTab === "scholar" ? "true" : "false"}
-            className={`text-lg sm:text-xl font-extrabold ${
-              activeTab === "scholar"
-                ? "border-b-2 border-[#d12f27] text-[#d12f27]"
-                : "text-gray-600"
-            } hover:text-[#d12f27] focus:outline-none font-body`}
-            onClick={() => setActiveTab("scholar")}
-          >
-            Scholar
-          </button>
-          <button
-            aria-selected={activeTab === "admin" ? "true" : "false"}
-            className={`text-lg sm:text-xl font-extrabold ${
-              activeTab === "admin"
-                ? "border-b-2 border-[#d12f27] text-[#d12f27]"
-                : "text-gray-600"
-            } hover:text-[#d12f27] focus:outline-none font-body`}
-            onClick={() => setActiveTab("admin")}
-          >
-            Admin
-          </button>
-        </div>
-
-        {/* Form for both tabs */}
+        {/* Form */}
         <div>
           <h2 className="text-2xl sm:text-3xl mb-4 sm:mb-6 font-semibold text-[#2a2a2a] font-body">
-            {activeTab === "scholar" ? "Scholar Log-in" : "Admin Log-in"}
+            Log-in
           </h2>
 
-          {/* Conditional rendering of form based on active tab */}
-          {activeTab === "scholar" ? (
-            <form className="py-8 space-y-6" onSubmit={handleSubmit}>
-              {message && (
+          {session ? (
+            <div>
+              <h3>Welcome back, {session.user?.email}!</h3>
+              <p>Role: {session.user?.role}</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {errorMessage && (
                 <div className="bg-red-500 text-white p-4 rounded-md">
-                  {message}
+                  {errorMessage}
                 </div>
               )}
 
@@ -111,6 +113,7 @@ const LoginSection = () => {
                   id="email"
                   className="shadow-md focus:ring-red-900 focus:border-red-900 block w-full max-w-lg sm:text-lg lg:text-xl border-gray-300 rounded-md p-4"
                   placeholder="Your Email"
+                  required
                 />
               </div>
 
@@ -125,54 +128,8 @@ const LoginSection = () => {
                   name="password"
                   id="password"
                   className="shadow-md focus:ring-red-900 focus:border-red-900 block w-full max-w-lg sm:text-lg lg:text-xl border-gray-300 rounded-md p-4"
-                  placeholder="Your StudentId"
-                />
-              </div>
-
-              <div className="flex items-center justify-center">
-                <button
-                  type="submit"
-                  className="flex items-center justify-center w-full max-w-lg rounded-md shadow py-4 px-6 text-lg sm:text-xl lg:text-2xl text-white bg-red-900 hover:bg-white hover:text-red-900 border-4 border-transparent hover:border-red-900 transition-colors duration-300"
-                >
-                  Log-in
-                </button>
-              </div>
-            </form>
-          ) : (
-            <form className="py-8 space-y-6">
-              {message && (
-                <div className="bg-red-500 text-white p-4 rounded-md">
-                  {message}
-                </div>
-              )}
-
-              <div className="flex items-center justify-center">
-                <label htmlFor="email-admin" className="sr-only">
-                  Admin Email
-                </label>
-                <input
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  type="email"
-                  name="email"
-                  id="email-admin"
-                  className="shadow-md focus:ring-red-900 focus:border-red-900 block w-full max-w-lg sm:text-lg lg:text-xl border-gray-300 rounded-md p-4"
-                  placeholder="Admin Email"
-                />
-              </div>
-
-              <div className="flex items-center justify-center">
-                <label htmlFor="password-admin" className="sr-only">
-                  Password
-                </label>
-                <input
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  type="password"
-                  name="password"
-                  id="password-admin"
-                  className="shadow-md focus:ring-red-900 focus:border-red-900 block w-full max-w-lg sm:text-lg lg:text-xl border-gray-300 rounded-md p-4"
-                  placeholder="Your Admin Password"
+                  placeholder="Your Password"
+                  required
                 />
               </div>
 

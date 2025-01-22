@@ -3,9 +3,24 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { google } from "googleapis";
 
 type SheetData = {
-  name: string;
   email: string;
+  password: string;
   role: string;
+  studentId: string;
+  batch: string;
+  sy: string;
+  year: string;
+  category: string;
+  status: string;
+  lastName: string;
+  firstName: string;
+  middleName: string;
+  school: string;
+  course: string;
+  duration: string;
+  mobileNumber: string;
+  facebook: string;
+  address: string;
 };
 
 export default async function handler(
@@ -34,15 +49,51 @@ export default async function handler(
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId: process.env.GOOGLE_SHEET_ID,
-      range: "A2:C1000", // Adjust the range as needed
+      range: "A2:R1000", // Adjusted range to cover columns A to R
     });
 
     const rows = response.data.values || [];
-    const data: SheetData[] = rows.map(([name, email, role]) => ({
-      name: String(name),
-      email: String(email),
-      role: String(role),
-    }));
+    const data: SheetData[] = rows.map(
+      ([
+        email,
+        password,
+        role,
+        studentId,
+        batch,
+        sy,
+        year,
+        category,
+        status,
+        lastName,
+        firstName,
+        middleName,
+        school,
+        course,
+        duration,
+        mobileNumber,
+        facebook,
+        address,
+      ]) => ({
+        email: String(email),
+        password: String(password),
+        role: String(role),
+        studentId: String(studentId),
+        batch: String(batch),
+        sy: String(sy),
+        year: String(year),
+        category: String(category),
+        status: String(status),
+        lastName: String(lastName),
+        firstName: String(firstName),
+        middleName: String(middleName),
+        school: String(school),
+        course: String(course),
+        duration: String(duration),
+        mobileNumber: String(mobileNumber),
+        facebook: String(facebook),
+        address: String(address),
+      })
+    );
 
     res.status(200).json({ data });
   } catch (error) {

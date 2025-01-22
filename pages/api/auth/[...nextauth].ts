@@ -1,4 +1,3 @@
-// pages/api/auth/[...nextauth].ts
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 
@@ -16,12 +15,8 @@ const authOptions: NextAuthOptions = {
           password: string;
         };
 
-        if (!email || !password) {
-          throw new Error("Email and password are required");
-        }
-
         try {
-          // Make a POST request to your login API route for authentication
+          // Call the custom login API
           const res = await fetch(`${process.env.NEXTAUTH_URL}/api/login`, {
             method: "POST",
             headers: {
@@ -31,29 +26,49 @@ const authOptions: NextAuthOptions = {
           });
 
           if (!res.ok) {
-            const errorData = await res.json();
-            throw new Error(errorData.message || "Authentication failed");
+            throw new Error("Invalid email or password");
           }
 
-          // Parse the response
           const user = await res.json();
 
-          // If user data returned from login API, return user object
-          return {
-            id: email,  // Use the email as the unique user ID
-            name: user.name, // The name from Google Sheets
-            email: user.email,
-            role: user.role, // The role from Google Sheets
-          };
+          // Return the user object with role
+          if (user) {
+            return {
+              id: user.id, // Using email as ID for simplicity
+              email: user.email,
+              role: user.role,
+            };
+          }
         } catch (error) {
-          console.error("Error during authentication:", error);
-          throw new Error("Authentication failed");
+          console.error("Login error:", error);
+          throw new Error("Invalid email or password");
         }
+
+        // Return null if user data is not available
+        return null;
       },
     }),
   ],
   pages: {
-    signIn: "/auth/signin",  // Customize as needed
+    signIn: "/auth/login",
+    // error: '/auth/error',
+    // signOut: '/auth/signout'
+  },
+  callbacks: {
+    async jwt({ token, user }) {
+      // Add user role to the token on first sign in
+      if (user) {
+        token.role = user.role;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      // Add role to the session object
+      if (token) {
+        session.user.role = token.role as string;
+      }
+      return session;
+    },
   },
 };
 
