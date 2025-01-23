@@ -18,13 +18,14 @@ const authOptions: NextAuthOptions = {
 
         try {
           // Call the custom login API
-          const res = await fetch(`${process.env.NEXTAUTH_URL}/api/login`, {
+          const res = await fetch(`${process.env.API_URL}/api/login`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({ email, password }),
           });
+          
 
           if (!res.ok) {
             throw new Error("Invalid email or password");
@@ -57,20 +58,21 @@ const authOptions: NextAuthOptions = {
   },
   callbacks: {
     async jwt({ token, user }) {
-      // Add user role to the token on first sign in
       if (user) {
         token.role = user.role;
       }
+      token.exp = Math.floor(Date.now() / 1000) + 60 * 60 * 24; // Token expires in 24 hours
       return token;
     },
     async session({ session, token }) {
-      // Add role to the session object
       if (token) {
-        session.user.role = token.role as string;
+        session.user = {
+          ...session.user,
+          role: token.role as string,
+        };
       }
       return session;
     },
-    
   },
 };
 

@@ -2,6 +2,16 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { google } from "googleapis";
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  // Add CORS headers
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  // Handle preflight OPTIONS request
+  if (req.method === "OPTIONS") {
+    return res.status(200).end(); // Return 200 for preflight requests
+  }
+
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Only POST requests are allowed" });
   }
