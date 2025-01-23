@@ -1,4 +1,3 @@
-// lib/googleSheet.ts
 import { google } from "googleapis";
 
 // Helper function to authenticate with Google Sheets API
@@ -8,7 +7,7 @@ export const authenticateGoogleSheets = () => {
       client_email: process.env.GOOGLE_CLIENT_EMAIL,
       private_key: process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
     },
-    scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
+    scopes: ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/spreadsheets.readonly"],
   });
 };
 
@@ -62,4 +61,27 @@ export const transformRowsToData = (rows: string[][]) => {
     facebook: row[16],
     address: row[17],
   }));
+};
+
+// Function to submit user data to Google Sheets
+export const submitUserData = async (name: string, email: string) => {
+  const auth = authenticateGoogleSheets();
+  const sheets = google.sheets({ auth, version: "v4" });
+
+  try {
+    // Append user data to the sheet
+    const response = await sheets.spreadsheets.values.append({
+      spreadsheetId: process.env.GOOGLE_SHEET_ID,
+      range: "Sheet1!A2", // Starting from the second row, column A
+      valueInputOption: "USER_ENTERED",
+      requestBody: {
+        values: [[name, email]], // Adjust this based on your sheet's columns
+      },
+    });
+
+    return response.data;
+  } catch (error) {
+    console.error("Error submitting user data to Google Sheets:", error);
+    throw new Error("Error submitting user data to Google Sheets");
+  }
 };
