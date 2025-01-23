@@ -1,17 +1,23 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { google } from "googleapis";
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  // Add CORS headers
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+// Helper function to handle CORS
+function allowCors(handler: (req: NextApiRequest, res: NextApiResponse) => Promise<void>) {
+  return async (req: NextApiRequest, res: NextApiResponse) => {
+    res.setHeader("Access-Control-Allow-Origin", process.env.CORS_ALLOWED_ORIGINS || "*"); // Replace "*" with specific origins for security
+    res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+    res.setHeader("Access-Control-Allow-Headers", "Content-Type, Authorization");
 
-  // Handle preflight OPTIONS request
-  if (req.method === "OPTIONS") {
-    return res.status(200).end(); // Return 200 for preflight requests
-  }
+    // Handle preflight OPTIONS request
+    if (req.method === "OPTIONS") {
+      return res.status(200).end();
+    }
 
+    return handler(req, res);
+  };
+}
+
+async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== "POST") {
     return res.status(405).json({ message: "Only POST requests are allowed" });
   }
@@ -63,3 +69,5 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     return res.status(500).json({ message: "Internal Server Error" });
   }
 }
+
+export default allowCors(handler);

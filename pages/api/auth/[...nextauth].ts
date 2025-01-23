@@ -25,7 +25,9 @@ const authOptions: NextAuthOptions = {
             },
             body: JSON.stringify({ email, password }),
           });
-          
+
+          console.log("Credentials:", { email, password });
+          console.log("API URL:", `${process.env.API_URL}/api/login`);
 
           if (!res.ok) {
             throw new Error("Invalid email or password");
@@ -42,7 +44,11 @@ const authOptions: NextAuthOptions = {
             };
           }
         } catch (error) {
-          console.error("Login error:", error);
+          if (error instanceof Error) {
+            console.error("Login error:", error.message);
+          } else {
+            console.error("Login error:", error);
+          }
           throw new Error("Invalid email or password");
         }
 
