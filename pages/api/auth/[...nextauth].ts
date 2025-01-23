@@ -10,7 +10,7 @@ const authOptions: NextAuthOptions = {
     CredentialsProvider({
       type: "credentials",
       credentials: {},
-      async authorize(credentials, req) {
+      async authorize(credentials) {
         const { email, password } = credentials as {
           email: string;
           password: string;
@@ -70,6 +70,7 @@ const authOptions: NextAuthOptions = {
       }
       return session;
     },
+    
   },
 };
 
