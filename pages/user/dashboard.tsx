@@ -30,6 +30,7 @@ const UserDashboard = () => {
   const { data: session, status } = useSession();
   const router = useRouter();
   const [userData, setUserData] = useState<SheetData | null>(null);
+  const [isDataLoaded, setIsDataLoaded] = useState(false); // Track if data has already been loaded
 
   useEffect(() => {
     if (status === "loading") return;
@@ -38,7 +39,8 @@ const UserDashboard = () => {
       router.push("/login"); // Redirect if user is not logged in or not a user
     }
 
-    // Fetch data from the API
+    if (isDataLoaded) return; // Prevent refetching if data is already loaded
+
     const fetchData = async () => {
       try {
         const response = await fetch("/api/getData");
@@ -51,6 +53,7 @@ const UserDashboard = () => {
 
         if (user) {
           setUserData(user); // Set the user data if found
+          setIsDataLoaded(true); // Mark data as loaded
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -58,7 +61,7 @@ const UserDashboard = () => {
     };
 
     fetchData();
-  }, [session, status, router]);
+  }, [session, status, router, isDataLoaded]);
 
   if (status === "loading") {
     return <p>Loading...</p>;
