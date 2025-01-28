@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { SheetData } from "../../types/sheetData";
 import Sidebar from "../../components/Sidebar";
+import Footer from "@/components/Footer";
 
 const UserDashboard = () => {
   const { data: session, status } = useSession();
