@@ -1,132 +1,117 @@
+"use client";
+
 import { useState } from "react";
 import {
-  FaHome,
-  FaTasks,
-  FaBell,
-  FaEnvelope,
-  FaUsers,
-  FaPlus,
-  FaBars,
-  FaTimes,
-} from "react-icons/fa";
-import { FiSearch } from "react-icons/fi";
+  AiOutlineHome,
+  AiOutlineBell,
+  AiOutlineBarChart,
+  AiOutlineHeart,
+  AiOutlineWallet,
+  AiOutlineLogout,
+  AiOutlineSearch,
+  AiOutlineClose,
+  AiOutlineMoon,
+  AiOutlineMenu,
+} from "react-icons/ai";
+import { signOut, useSession } from "next-auth/react";
 
 const Sidebar = () => {
-  const [activeItem, setActiveItem] = useState("Dashboard");
-  const [isSidebarOpen, setSidebarOpen] = useState(false);
-
-  const menuItems = [
-    { name: "Dashboard", icon: <FaHome size={20} />, count: null },
-    { name: "Tasks", icon: <FaTasks size={20} />, count: 32 },
-    { name: "Notifications", icon: <FaBell size={20} />, count: 4 },
-    { name: "Messages", icon: <FaEnvelope size={20} />, count: null },
-    { name: "Inbox", icon: <FaUsers size={20} />, count: 9 },
-  ];
-
-  const teams = [
-    { name: "Peter Taylor", color: "bg-pink-500" },
-    { name: "Luvleen Lawrence", color: "bg-purple-500" },
-    { name: "Su Hua", color: "bg-green-500" },
-  ];
+  const [isOpen, setIsOpen] = useState(false);
+  const [active, setActive] = useState("Revenue");
+  const { data: session } = useSession();
 
   return (
-    <div className="relative">
-      {/* Mobile Toggle Button */}
+    <div className="relative flex">
+      {/* Toggle Button */}
       <button
-        className="lg:hidden fixed top-4 left-4 z-50 p-2 bg-blue-500 text-white rounded-full shadow-md"
-        onClick={() => setSidebarOpen(!isSidebarOpen)}
+        className="fixed top-4 left-4 bg-[#d12f27] text-white p-2 rounded-md md:hidden"
+        onClick={() => setIsOpen(!isOpen)}
       >
-        {isSidebarOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+        {isOpen ? <AiOutlineClose size={24} /> : <AiOutlineMenu size={24} />}
       </button>
 
       {/* Sidebar */}
       <div
-        className={`fixed lg:static z-40 h-screen w-64 bg-white shadow-lg flex flex-col transform transition-transform duration-300 ${
-          isSidebarOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:translate-x-0`}
+        className={`fixed h-screen bg-white shadow-lg transition-all duration-300 z-50 md:relative md:block flex flex-col 
+        ${isOpen ? "w-64 left-0" : "w-16 left-0 md:w-16"}`}
       >
+        {/* Close Button */}
+        <button
+          className="absolute top-4 right-4 bg-[#d12f27] text-white p-2 rounded-full md:hidden"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <AiOutlineClose size={24} />
+        </button>
+
         {/* Profile Section */}
-        <div className="p-6 text-center border-b border-gray-200">
-          <div className="relative mx-auto w-16 h-16 rounded-full bg-gray-300">
-            <span className="absolute right-0 bottom-0 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></span>
-          </div>
-          <h4 className="mt-4 text-lg font-semibold">Jackson D.</h4>
-          <p className="text-sm text-gray-500">Manager</p>
+        <div className="flex flex-col items-center py-6 border-b border-gray-200">
+          <img
+            src="/profile.jpg"
+            alt="Profile"
+            className="w-14 h-14 rounded-full border-2 border-gray-300"
+          />
+          {isOpen && session && session.user && (
+            <>
+              <h2 className="text-lg font-semibold mt-2">{session.user.name}</h2>
+              <p className="text-sm text-gray-500">{session.user.role}</p>
+            </>
+          )}
         </div>
 
         {/* Search Bar */}
-        <div className="p-4">
-          <div className="flex items-center gap-2 bg-gray-100 px-3 py-2 rounded-lg">
-            <FiSearch className="text-gray-500" />
-            <input
-              type="text"
-              placeholder="Search"
-              className="flex-1 bg-transparent focus:outline-none text-sm text-gray-600"
-            />
+        {isOpen && (
+          <div className="px-4 mt-4">
+            <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 shadow-sm">
+              <AiOutlineSearch size={16} className="text-gray-500" />
+              <input
+                type="text"
+                placeholder="Search..."
+                className="ml-2 bg-transparent outline-none w-full"
+              />
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Menu */}
-        <div className="flex-1 p-4">
-          <ul className="space-y-4">
-            {menuItems.map((item) => (
-              <li
+        {/* Menu Items */}
+        <nav className="mt-6 px-4 flex flex-col gap-2">
+          {[
+            { name: "Dashboard", icon: <AiOutlineHome size={20} /> },
+            { name: "Revenue", icon: <AiOutlineBarChart size={20} /> },
+            { name: "Notifications", icon: <AiOutlineBell size={20} /> },
+            { name: "Analytics", icon: <AiOutlineBarChart size={20} /> },
+            { name: "Likes", icon: <AiOutlineHeart size={20} /> },
+            { name: "Wallets", icon: <AiOutlineWallet size={20} /> },
+          ].map((item) => (
+            <div key={item.name} className="flex items-center">
+              <button
                 key={item.name}
-                onClick={() => setActiveItem(item.name)}
-                className={`flex items-center gap-3 cursor-pointer p-3 rounded-lg ${
-                  activeItem === item.name
-                    ? "bg-blue-500 text-white"
-                    : "text-gray-600 hover:bg-gray-100"
-                }`}
+                className={`flex items-center px-5 py-3 w-full text-left text-gray-700 rounded-lg transition-all
+                  ${active === item.name ? "bg-[#d12f27] text-white shadow-lg" : "hover:bg-gray-100"}`}
+                onClick={() => setActive(item.name)}
               >
-                <div className="relative flex items-center justify-center w-8 h-8">
-                  {item.icon}
-                  {item.count && (
-                    <span className="absolute -top-2 -right-2 w-5 h-5 text-xs bg-blue-600 text-white rounded-full flex items-center justify-center">
-                      {item.count}
-                    </span>
-                  )}
-                </div>
-                <span className="flex-1 text-sm font-medium">{item.name}</span>
-                {item.name === "Tasks" && activeItem === "Tasks" && (
-                  <FaPlus size={16} />
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
+                {item.icon}
+                {isOpen && <span className="ml-4 font-medium">{item.name}</span>}
+              </button>
+              {!isOpen && <span className="absolute left-20 bg-gray-700 text-white px-2 py-1 rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">{item.name}</span>}
+            </div>
+          ))}
+        </nav>
 
-        {/* Teams Section */}
-        <div className="px-4 pb-4">
-          <div className="flex justify-between items-center mb-2">
-            <h4 className="text-sm font-semibold text-gray-600">Teams</h4>
-            <button className="text-xs text-orange-500">VIEW ALL</button>
-          </div>
-          <div className="space-y-3">
-            {teams.map((team) => (
-              <div key={team.name} className="flex items-center gap-3">
-                <div className={`w-8 h-8 rounded-full ${team.color}`}></div>
-                <p className="text-sm text-gray-600">{team.name}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Drag-and-Drop Upload */}
-        <div className="mt-auto p-4">
-          <div className="border-dashed border-2 border-gray-300 p-4 text-center rounded-lg text-sm text-gray-400">
-            Drag-n-Drop to Upload
+        {/* Footer */}
+        <div className="absolute bottom-4 w-full px-4">
+          <button
+            onClick={() => signOut({ callbackUrl: "/" })}
+            className="flex items-center w-full py-3 text-gray-700 hover:bg-gray-100 rounded-lg px-5"
+          >
+            <AiOutlineLogout size={20} />
+            {isOpen && <span className="ml-4 font-medium">Logout</span>}
+          </button>
+          <div className="flex items-center justify-center mt-4 bg-gray-100 rounded-lg px-5 py-2 shadow-sm">
+            <AiOutlineMoon size={20} className="text-gray-500" />
+            {isOpen && <span className="ml-4 text-gray-700">Dark Mode</span>}
           </div>
         </div>
       </div>
-
-      {/* Backdrop for Mobile */}
-      {isSidebarOpen && (
-        <div
-          className="fixed inset-0 bg-black bg-opacity-30 z-30"
-          onClick={() => setSidebarOpen(false)}
-        ></div>
-      )}
     </div>
   );
 };
