@@ -1,118 +1,183 @@
-"use client";
-
-import { useState } from "react";
-import {
-  AiOutlineHome,
-  AiOutlineBell,
-  AiOutlineBarChart,
-  AiOutlineHeart,
-  AiOutlineWallet,
-  AiOutlineLogout,
-  AiOutlineSearch,
-  AiOutlineClose,
-  AiOutlineMoon,
-  AiOutlineMenu,
-} from "react-icons/ai";
-import { signOut, useSession } from "next-auth/react";
+// Sidebar component
+import { FiHome, FiFileText, FiLogOut, FiMenu, FiX } from "react-icons/fi"; // Added FiX for close icon
+import { useSession, signOut } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const Sidebar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [active, setActive] = useState("Revenue");
   const { data: session } = useSession();
+  const router = useRouter();
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false); // State for toggling sidebar on mobile/tablet
+  const [isMobile, setIsMobile] = useState(false); // State to detect if it’s mobile or not
+
+  const handleSignOut = () => {
+    signOut({ callbackUrl: "/" });
+  };
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
+
+  const handleResize = () => {
+    if (window.innerWidth <= 1024) {
+      setIsMobile(true); // Mobile/tablet view
+    } else {
+      setIsMobile(false); // Large screen view
+    }
+  };
+
+  // Watch for window resize
+  useEffect(() => {
+    handleResize(); // Set the initial state
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
-    <div className="relative flex">
-      {/* Toggle Button */}
-      <button
-        className="fixed top-4 left-4 bg-[#d12f27] text-white p-2 rounded-md md:hidden"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        {isOpen ? <AiOutlineClose size={24} /> : <AiOutlineMenu size={24} />}
-      </button>
+    <>
+      {/* Top Bar for small screens (Mobile and Tablet view only) */}
+      {isMobile && !isSidebarOpen && (
+        <div className="xl:hidden flex justify-between items-center p-4 bg-red-600 fixed top-0 left-0 right-0 z-40">
+          <button onClick={toggleSidebar} className="text-white">
+            <FiMenu className="w-6 h-6" />
+          </button>
 
-      {/* Sidebar */}
+          <div className="flex items-center space-x-2">
+            <img
+              src="/images/logo.png"
+              alt="Logo"
+              className="h-8 w-8 sm:h-10 sm:w-10 rounded-full"
+            />
+            <span className="text-xs sm:text-sm lg:text-lg font-heading font-extrabold text-white">
+              FRANCISCO M BAUTISTA FOUNDATION INC.
+            </span>
+          </div>
+
+          <button
+            onClick={handleSignOut}
+            className="text-white hover:bg-red-700 hover:text-white px-4 py-3 rounded-lg font-body"
+          >
+            <FiLogOut className="w-5 h-5" />
+          </button>
+        </div>
+      )}
+
+      {/* Sidebar for mobile screens (Mobile view) */}
       <div
-        className={`fixed h-screen bg-white shadow-lg transition-all duration-300 z-50 md:relative md:block flex flex-col 
-        ${isOpen ? "w-64 left-0" : "w-16 left-0 md:w-16"}`}
+        className={`xl:hidden ${
+          isSidebarOpen ? "flex" : "hidden"
+        } fixed inset-0 bg-red-600 shadow-lg p-6 h-screen z-50 flex-col`}
       >
-        {/* Close Button */}
+        {/* Close button inside the sidebar */}
         <button
-          className="absolute top-4 right-4 bg-[#d12f27] text-white p-2 rounded-full md:hidden"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={toggleSidebar}
+          className="text-white absolute top-4 right-4 p-2"
         >
-          <AiOutlineClose size={24} />
+          <FiX className="w-6 h-6" />
         </button>
 
-        {/* Profile Section */}
-        <div className="flex flex-col items-center py-6 border-b border-gray-200">
+        <div className="flex items-center space-x-2 mb-8 px-4">
           <img
-            src="/profile.jpg"
-            alt="Profile"
-            className="w-14 h-14 rounded-full border-2 border-gray-300"
+            src="/images/logo.png"
+            alt="Logo"
+            className="h-8 w-8 sm:h-10 sm:w-10 rounded-full"
           />
-          {isOpen && session && session.user && (
-            <>
-              <h2 className="text-lg font-semibold mt-2">{session.user.name}</h2>
-              <p className="text-sm text-gray-500">{session.user.role}</p>
-            </>
-          )}
+          <span className="text-xs sm:text-sm lg:text-lg xl:text-xl font-heading font-extrabold text-white">
+            FRANCISCO M BAUTISTA FOUNDATION INC.
+          </span>
         </div>
 
-        {/* Search Bar */}
-        {isOpen && (
-          <div className="px-4 mt-4">
-            <div className="flex items-center bg-gray-100 rounded-full px-4 py-2 shadow-sm">
-              <AiOutlineSearch size={16} className="text-gray-500" />
-              <input
-                type="text"
-                placeholder="Search..."
-                className="ml-2 bg-transparent outline-none w-full"
-              />
-            </div>
-          </div>
-        )}
-
-        {/* Menu Items */}
-        <nav className="mt-6 px-4 flex flex-col gap-2">
-          {[
-            { name: "Dashboard", icon: <AiOutlineHome size={20} /> },
-            { name: "Revenue", icon: <AiOutlineBarChart size={20} /> },
-            { name: "Notifications", icon: <AiOutlineBell size={20} /> },
-            { name: "Analytics", icon: <AiOutlineBarChart size={20} /> },
-            { name: "Likes", icon: <AiOutlineHeart size={20} /> },
-            { name: "Wallets", icon: <AiOutlineWallet size={20} /> },
-          ].map((item) => (
-            <div key={item.name} className="flex items-center">
-              <button
-                key={item.name}
-                className={`flex items-center px-5 py-3 w-full text-left text-gray-700 rounded-lg transition-all
-                  ${active === item.name ? "bg-[#d12f27] text-white shadow-lg" : "hover:bg-gray-100"}`}
-                onClick={() => setActive(item.name)}
-              >
-                {item.icon}
-                {isOpen && <span className="ml-4 font-medium">{item.name}</span>}
-              </button>
-              {!isOpen && <span className="absolute left-20 bg-gray-700 text-white px-2 py-1 rounded-md opacity-0 transition-opacity duration-300 group-hover:opacity-100">{item.name}</span>}
-            </div>
-          ))}
-        </nav>
-
-        {/* Footer */}
-        <div className="absolute bottom-4 w-full px-4">
+        {/* Sidebar Links */}
+        <div className="flex flex-col space-y-6">
           <button
-            onClick={() => signOut({ callbackUrl: "/" })}
-            className="flex items-center w-full py-3 text-gray-700 hover:bg-gray-100 rounded-lg px-5"
+            onClick={() => router.push("/user/dashboard")}
+            className="text-white hover:bg-red-700 hover:text-white px-4 py-3 rounded-lg flex items-center space-x-2 font-body"
           >
-            <AiOutlineLogout size={20} />
-            {isOpen && <span className="ml-4 font-medium">Logout</span>}
+            <FiHome className="w-5 h-5" />
+            <span className="text-lg">Dashboard</span>
           </button>
-          <div className="flex items-center justify-center mt-4 bg-gray-100 rounded-lg px-5 py-2 shadow-sm">
-            <AiOutlineMoon size={20} className="text-gray-500" />
-            {isOpen && <span className="ml-4 text-gray-700">Dark Mode</span>}
-          </div>
+
+          <button
+            onClick={() => router.push("/user/grades")}
+            className="text-white hover:bg-red-700 hover:text-white px-4 py-3 rounded-lg flex items-center space-x-2 font-body"
+          >
+            <FiFileText className="w-5 h-5" />
+            <span className="text-lg">Grades</span>
+          </button>
+
+          <button
+            onClick={() => router.push("/user/evaluation")}
+            className="text-white hover:bg-red-700 hover:text-white px-4 py-3 rounded-lg flex items-center space-x-2 font-body"
+          >
+            <FiFileText className="w-5 h-5" />
+            <span className="text-lg">Evaluation</span>
+          </button>
+
+          {/* Sign Out Button */}
+          <button
+            onClick={handleSignOut}
+            className="text-white hover:bg-red-700 hover:text-white px-4 py-3 rounded-lg flex items-center space-x-2 font-body mt-auto"
+          >
+            <FiLogOut className="w-5 h-5" />
+            <span className="text-lg">Sign Out</span>
+          </button>
         </div>
       </div>
-    </div>
+
+      {/* Sidebar for large screens (always visible, no toggle) */}
+      <div className="hidden xl:flex w-64 bg-red-600 shadow-lg p-6 h-screen fixed left-0 top-0 z-30 flex-col">
+        {/* Logo & Sign Out aligned on top */}
+        <div className="flex items-center justify-between mb-8 px-4">
+          <div className="flex items-center space-x-2">
+            <img
+              src="/images/logo.png"
+              alt="Logo"
+              className="h-8 w-8 sm:h-10 sm:w-10 rounded-full"
+            />
+            <span className="text-sm sm:text-sm lg:text-lg xl:text-xl font-heading font-extrabold text-white">
+              FRANCISCO M BAUTISTA FOUNDATION INC.
+            </span>
+          </div>
+        </div>
+
+        {/* Sidebar Links (Visible only on large screens) */}
+        <div className="flex flex-col space-y-6">
+          <button
+            onClick={() => router.push("/user/dashboard")}
+            className="text-white hover:bg-red-700 hover:text-white px-4 py-3 rounded-lg flex items-center space-x-2 font-body"
+          >
+            <FiHome className="w-5 h-5" />
+            <span className="text-lg">Dashboard</span>
+          </button>
+
+          <button
+            onClick={() => router.push("/user/grades")}
+            className="text-white hover:bg-red-700 hover:text-white px-4 py-3 rounded-lg flex items-center space-x-2 font-body"
+          >
+            <FiFileText className="w-5 h-5" />
+            <span className="text-lg">Grades</span>
+          </button>
+
+          <button
+            onClick={() => router.push("/user/evaluation")}
+            className="text-white hover:bg-red-700 hover:text-white px-4 py-3 rounded-lg flex items-center space-x-2 font-body"
+          >
+            <FiFileText className="w-5 h-5" />
+            <span className="text-lg">Evaluation</span>
+          </button>
+
+          {/* Sign Out Button */}
+          <button
+            onClick={handleSignOut}
+            className="text-white hover:bg-red-700 hover:text-white px-4 py-3 rounded-lg flex items-center space-x-2 font-body mt-auto"
+          >
+            <FiLogOut className="w-5 h-5" />
+            <span className="text-lg">Sign Out</span>
+          </button>
+        </div>
+      </div>
+    </>
   );
 };
 

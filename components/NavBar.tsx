@@ -31,13 +31,14 @@ const Navbar = () => {
             alt="Logo"
             className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full"
           />
-          <span className="text-sm sm:text-md lg:text-2xl font-heading font-extrabold">
+          <span className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-body font-extrabold">
             FRANCISCO M BAUTISTA FOUNDATION INC.
           </span>
         </div>
+
         <div className="hidden xl:flex space-x-10 ml-auto text-lg items-center">
           <Link
-            href="#about"
+            href="/apply"
             className="hover:bg-[#d12f27] hover:text-white px-3 py-2 rounded-md font-body"
           >
             About Us
@@ -57,7 +58,7 @@ const Navbar = () => {
         </div>
         <div className="hidden xl:flex items-center space-x-3 ml-auto">
           <Link
-            href="#apply"
+            href="/apply"
             className="bg-[#e4542f] text-white px-6 py-2 rounded-full hover:bg-[#b43b28] text-lg font-body font-semibold"
           >
             APPLY NOW
@@ -125,7 +126,7 @@ const Navbar = () => {
           </Link>
           <div className="flex flex-col sm:flex-row space-y-3 sm:space-x-4 w-full mt-4">
             <Link
-              href="#apply"
+              href="/apply"
               className="py-2 px-5 bg-[#e4542f] text-white hover:bg-[#b32c21] text-base sm:text-lg rounded-md w-full text-center font-body"
             >
               APPLY NOW

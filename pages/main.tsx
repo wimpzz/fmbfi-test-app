@@ -9,7 +9,6 @@ import DemographicsSection from "@/components/DemographicsSection2";
 import FeaturesSection from "@/components/FeaturesSection";
 import NewsSection from "@/components/NewsSection";
 import AboutUs from "@/components/AboutUs";
-import { signIn } from "next-auth/react";
 
 const Home = () => {
   const router = useRouter();
