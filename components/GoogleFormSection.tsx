@@ -45,7 +45,8 @@ const GoogleFormSection = () => {
 
         <div className="flex justify-center w-full">
           <iframe
-            src={googleFormLink} // Use the environment variable for the iframe source
+            //src={googleFormLink} // Use the environment variable for the iframe source
+            src="https://docs.google.com/forms/d/e/1FAIpQLSemqu5lRS-8kVLNs2idYH9BJ7I_QFTrlMuDIkqaQX_-CHIWYA/viewform?embedded=true" // Use the environment variable for the iframe source
             width="100%" // Ensures the iframe stretches to the container's width
             height="600" // You can adjust the height here
             title="Google Form"
