@@ -38,7 +38,7 @@ const Navbar = () => {
 
         <div className="hidden xl:flex space-x-10 ml-auto text-lg items-center">
           <Link
-            href="/apply"
+            href="#about"
             className="hover:bg-[#d12f27] hover:text-white px-3 py-2 rounded-md font-body"
           >
             About Us

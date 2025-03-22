@@ -9,6 +9,7 @@ import FeaturesSection from "@/components/FeaturesSection";
 import NewsSection from "@/components/NewsSection";
 import AboutUs from "@/components/AboutUs";
 import AnnouncementModal from "@/components/Announcement"; // Import AnnouncementModal
+import NewsSection2 from "@/components/NewsSection2";
 
 const Home = () => {
   const [showScroll, setShowScroll] = useState(false);
@@ -61,7 +62,7 @@ const Home = () => {
         <FeaturesSection />
 
         {/* News Section */}
-        <NewsSection />
+        <NewsSection2 />
 
         {/* Footer */}
         <Footer />
