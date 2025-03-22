@@ -31,7 +31,7 @@ const Navbar = () => {
             alt="Logo"
             className="h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 rounded-full"
           />
-          <span className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-body font-extrabold">
+          <span className="text-xs sm:text-sm md:text-lg lg:text-xl xl:text-2xl font-body font-bold">
             FRANCISCO M BAUTISTA FOUNDATION INC.
           </span>
         </div>

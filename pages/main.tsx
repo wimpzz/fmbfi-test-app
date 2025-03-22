@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
-import { useRouter } from "next/router";
 import { FaArrowUp } from "react-icons/fa";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/NavBar";
@@ -9,11 +8,12 @@ import DemographicsSection from "@/components/DemographicsSection2";
 import FeaturesSection from "@/components/FeaturesSection";
 import NewsSection from "@/components/NewsSection";
 import AboutUs from "@/components/AboutUs";
+import AnnouncementModal from "@/components/Announcement"; // Import AnnouncementModal
 
 const Home = () => {
-  const router = useRouter();
   const [showScroll, setShowScroll] = useState(false);
   const [footerHeight, setFooterHeight] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(true); // State to control modal visibility
 
   const handleScroll = () => {
     setShowScroll(window.scrollY > 300);
@@ -21,6 +21,10 @@ const Home = () => {
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false); // Close the modal
   };
 
   useEffect(() => {
@@ -44,14 +48,6 @@ const Home = () => {
         {/* Navbar */}
         <Navbar />
 
-        {/* <button
-          onClick={() => {
-            signIn();
-          }}
-        >
-          Sign In
-        </button> */}
-
         {/* Hero Section */}
         <HeroSection />
 
@@ -70,6 +66,9 @@ const Home = () => {
         {/* Footer */}
         <Footer />
       </div>
+
+      {/* Announcement Modal */}
+      <AnnouncementModal isOpen={isModalOpen} closeModal={closeModal} />
 
       {/* Back to Top Button */}
       {showScroll && (
