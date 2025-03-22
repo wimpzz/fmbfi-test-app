@@ -31,9 +31,9 @@ const AnnouncementSection = ({
         </div>
 
         <p className="text-lg sm:text-xl md:text-2xl mb-4 font-body">
-          The registration for the FMBFI Examination 2025 is now open! Don't
-          miss your chance to apply for scholarship. The deadline for
-          registration is{" "}
+          The registration for the 21st FMBFI Qualifying Examination 2025 is now
+          open! Don't miss your chance to apply for scholarship. The deadline
+          for registration is{" "}
           <span className="font-semibold font-heading">April 27, 2025</span>.
         </p>
 
