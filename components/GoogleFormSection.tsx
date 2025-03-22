@@ -20,14 +20,14 @@ const GoogleFormSection = () => {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage: 'url("/images/FMBFI.JPG")',
-          opacity: 0.5,
+          opacity: 1,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
       ></div>
       <div className="absolute inset-0 bg-black opacity-40"></div>
 
-      <div className="bg-white p-6 sm:p-8 md:p-12 rounded-lg shadow-xl w-[90%] sm:w-[600px] md:w-[800px] relative z-10 mt-12 sm:mt-16 md:mt-20">
+      <div className="bg-white p-6 sm:p-8 md:p-12 rounded-lg shadow-xl w-[90%] sm:w-[600px] md:w-[800px] relative z-10 mt-12 sm:mt-16 md:mt-20 mb-8">
         <div
           className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mb-4 cursor-pointer" // Reduced the bottom margin here
           onClick={() => router.push("/")}
