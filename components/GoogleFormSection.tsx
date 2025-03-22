@@ -37,9 +37,9 @@ const GoogleFormSection = () => {
 
         <div className="flex justify-center space-x-6 sm:space-x-8 border-b pb-6 pt-4 sm:pt-6 md:pt-8">
           {/* Reduced the top padding here */}
-          <h2 className="text-2xl sm:text-3xl font-heading text-center text-[#d12f27]">
-            Welcome to the official registration portal for the FMBFI
-            Examination 2025!
+          <h2 className="text-2xl sm:text-3xl font-heading text-center text-[#d12f27] font-bold">
+            Welcome to the 21st Qualifying FMBFI Examination 2025 registration
+            portal!
           </h2>
         </div>
 
