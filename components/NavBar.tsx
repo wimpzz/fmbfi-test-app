@@ -9,6 +9,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [isSearchModalOpen, setIsSearchModalOpen] = useState<boolean>(false);
   const { data: session } = useSession(); // Use session from NextAuth
+  const [isLoginDisabled, setIsLoginDisabled] = useState<boolean>(true); // Disabled state for the login button
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,6 +21,12 @@ const Navbar = () => {
 
   const closeSearchModal = () => {
     setIsSearchModalOpen(false);
+  };
+
+  // Temporarily disable the login button (for example, after clicking it)
+  const handleLoginClick = () => {
+    setIsLoginDisabled(true); // Disable the button after click
+    signIn(); // Proceed with the login
   };
 
   return (
@@ -78,8 +85,9 @@ const Navbar = () => {
             </Link>
           ) : (
             <button
-              onClick={() => signIn()}
-              className="bg-[#d12f27] text-white px-6 py-2 rounded-full hover:bg-[#b3271d] text-lg font-body font-semibold"
+              onClick={handleLoginClick} // Handle login button click
+              disabled={isLoginDisabled} // Disable button based on state
+              className={`bg-[#d12f27] text-white px-6 py-2 rounded-full hover:bg-[#b3271d] text-lg font-body font-semibold ${isLoginDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
             >
               LOG-IN
             </button>
@@ -88,9 +96,7 @@ const Navbar = () => {
         <div className="flex items-center space-x-3 ml-auto xl:ml-0">
           <button
             onClick={openSearchModal}
-            className={`p-2 rounded-md ${
-              isSearchModalOpen ? "text-white bg-d12f27" : "text-d12f27"
-            }`}
+            className={`p-2 rounded-md ${isSearchModalOpen ? "text-white bg-d12f27" : "text-d12f27"}`}
           >
             <FaSearch className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7" />
           </button>
@@ -146,8 +152,9 @@ const Navbar = () => {
               </Link>
             ) : (
               <button
-                onClick={() => signIn()}
-                className="py-2 px-5 bg-[#d12f27] text-white hover:bg-[#b32c21] text-base sm:text-lg rounded-md w-full text-center font-body"
+                onClick={handleLoginClick}
+                disabled={isLoginDisabled}
+                className={`py-2 px-5 bg-[#d12f27] text-white hover:bg-[#b32c21] text-base sm:text-lg rounded-md w-full text-center font-body ${isLoginDisabled ? "opacity-50 cursor-not-allowed" : ""}`}
               >
                 LOG-IN
               </button>

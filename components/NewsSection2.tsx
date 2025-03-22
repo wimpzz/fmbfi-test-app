@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { MdClose } from "react-icons/md"; // Importing the MdClose icon from react-icons
 
 const NewsSection2 = () => {
   const [isModalOpen, setIsModalOpen] = useState(false); // Manage modal state
@@ -30,7 +31,7 @@ const NewsSection2 = () => {
       </p>
 
       {/* Grid Layout for Square News Items with Padding Added Before Cards */}
-      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 px-4 sm:px-8 relative z-10 pt-8"> {/* Added padding-top here */}
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 px-4 sm:px-8 relative z-10 pt-8">
         {/* News Item 1 - FMBFI EXAMINATION */}
         <div className="flex flex-col items-center bg-[#e4542f] rounded-lg shadow-lg overflow-hidden">
           <div
@@ -87,11 +88,12 @@ const NewsSection2 = () => {
               alt="FMBFI Examination"
               className="max-w-full max-h-[90vh] object-contain"
             />
+            {/* Updated Close Button with React Icon and Increased Size */}
             <button
               onClick={closeModal}
-              className="absolute top-2 right-2 text-white text-2xl bg-transparent border-0 cursor-pointer"
+              className="absolute top-2 right-2 text-white text-4xl bg-transparent border-0 cursor-pointer"
             >
-              &times; {/* Close icon */}
+              <MdClose /> {/* Close icon from react-icons */}
             </button>
           </div>
         </div>

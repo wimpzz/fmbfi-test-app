@@ -9,7 +9,8 @@ const Footer = () => {
           FRANCISCO M BAUTISTA FOUNDATION, INC
         </p>
         <p className="text-xs sm:text-sm lg:text-base font-body lg:whitespace-nowrap">
-          999 Epifanio de los Santos Ave, Project 7, Quezon City, 1105 Metro Manila
+          999 Epifanio de los Santos Ave, Project 7, Quezon City, 1105 Metro
+          Manila
         </p>
 
         <div className="flex justify-center space-x-4 my-3">
@@ -42,21 +43,21 @@ const Footer = () => {
         </p>
         <p className="text-xs sm:text-sm md:text-base lg:text-lg">
           <a
-            href="/privacy-policy"
+            // href="/privacy-policy"
             className="text-white hover:text-gray-200 hover:underline px-2 py-1"
           >
             Privacy Policy
           </a>{" "}
           |{" "}
           <a
-            href="/terms-of-service"
+            // href="/terms-of-service"
             className="text-white hover:text-gray-200 hover:underline px-2 py-1"
           >
             Terms of Service
           </a>{" "}
           |{" "}
           <a
-            href="/contact-us"
+            // href="/contact-us"
             className="text-white hover:text-gray-200 hover:underline px-2 py-1"
           >
             Contact Us

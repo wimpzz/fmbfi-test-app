@@ -75,11 +75,8 @@ const Home = () => {
       {showScroll && (
         <button
           onClick={scrollToTop}
-          className="fixed right-5 flex flex-col items-center justify-center bg-[#d12f27] text-white p-6 rounded-full shadow-lg hover:bg-[#b3271d] transition duration-300 z-50"
+          className="fixed bottom-5 right-5 flex flex-col items-center justify-center bg-[#d12f27] text-white p-6 rounded-full shadow-lg hover:bg-[#b3271d] transition duration-300 z-50"
           aria-label="Scroll to top"
-          style={{
-            bottom: `calc(${footerHeight}px + 16px)`, // Adjusts the button position above the footer
-          }}
         >
           <FaArrowUp className="text-md" />{" "}
           <span className="hidden sm:inline mt-2">Back to Top</span>{" "}
